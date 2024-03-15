@@ -12,7 +12,7 @@
       
       <!-- Avatars Section -->
       <div class="flex flex-col md:flex-row justify-center items-center gap-10">
-        
+
         <!-- Avatar For Lost -->
         <a href="https://example.com" class="relative group">
           <div class="avatar">
@@ -45,7 +45,7 @@
 
 
   <!-- Hero Banner -->
-<div class="hero min-h-screen" style="background-image: url('HP-2.png'); background-position: bottom;">
+<div class="hero min-h-screen" style="background-image: url('/HP-2.png'); background-position: bottom;">
   <div class="hero-content text-center text-neutral-content"></div>
 
   <!-- Cards Section -->
