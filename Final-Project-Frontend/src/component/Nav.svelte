@@ -25,7 +25,7 @@
     </div>
     <!-- button content -->
     <a href="/">
-      <img src="Logo.png" alt="Paw Pals Logo" class="logo-image w-auto h-14">
+      <img src="/Logo.png" alt="Paw Pals Logo" class="logo-image w-auto h-14">
     </a>
   </div>
   <div class="navbar-center hidden lg:flex">
