@@ -4,59 +4,106 @@
 
 
 <!-- Hero Banner -->
-<div class="hero min-h-screen" style="background-image: url('PAWPALS.png'); background-position: bottom;">
+<div class="hero min-h-screen" style="background-image: url('HP-1.png'); background-position: bottom;">
   <div class="hero-content text-center text-neutral-content">
-    <div class="max-w-md">
-      <h1 class="mb-5 text-5xl text-white font-bold">Paw Pals Union</h1>
-      <p class="mb-5 text-white">Lost a pet and need help searching for it? You're in the right place. Paw Pals helps owners connect and search for their beloved pets here in Malaysia.</p>
-      <button class="btn btn-primary">Start Searching</button>
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8"> <!-- Adjust the max-width and padding classes as needed -->
+      <h1 class="mb-5 text-5xl text-purple-800 font-bold">Paw Pals Union</h1>
+      <p class="mb-10 text-white text-xl">Lost your furry friend and feeling worried? Don't fret! You've landed in the perfect spot. Welcome to Paw Pals, where we're all about helping owners like you connect and search for your beloved pets right here in Malaysia. Let's work together to bring your furry family member back home where they belong!</p>
+      
+      <!-- Avatars Section -->
+      <div class="flex flex-col md:flex-row justify-center items-center gap-10">
+        
+        <!-- Avatar For Lost -->
+        <a href="https://example.com" class="relative group">
+          <div class="avatar">
+            <div class="w-64 rounded-full overflow-hidden">
+              <img src="Lost&Found-1.png" class="transition-opacity duration-200 group-hover:opacity-20" />
+            </div>
+          </div>
+          <div class="absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+            <span class="text-purple-800 text-lg font-semibold">Search Lost Pet</span>
+          </div>
+        </a>
+
+        <!-- Avatar For Found -->
+        <a href="https://example.com" class="relative group">
+          <div class="avatar">
+            <div class="w-64 rounded-full overflow-hidden">
+              <img src="Lost&Found-2.png" class="transition-opacity duration-200 group-hover:opacity-20" />
+            </div>
+          </div>
+          <div class="absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+            <span class="text-purple-800 text-lg font-semibold">Found Pet</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>
 
 
+
+
   <!-- Hero Banner -->
-<div class="hero min-h-screen" style="background-image: url('BG3.png'); background-position: bottom;">
+<div class="hero min-h-screen" style="background-image: url('HP-2.png'); background-position: bottom;">
   <div class="hero-content text-center text-neutral-content"></div>
 
   <!-- Cards Section -->
-  <div class="cards-container flex justify-center mt-20">
+  <div>
+    <h1 class="mb-5 text-5xl text-white font-bold text-center">How it works</h1>
+   <div class="cards-container flex justify-center mt-20">
     <!-- Card 1 -->
     <div class="card card-compact w-96 bg-base-100 shadow-xl">
-      <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+      <figure><img src="HowItWorks-1.png" alt="TakeAPhoto" /></figure>
       <div class="card-body">
-        <h2 class="card-title">Lost Pet Alert!</h2>
-        <p>Our Pet Alerts notify local residents and organizations about a missing pet via email, SMS, and phone calls. It is an effective tool that can help you find your lost cat, dog, bird, or other types of pets by raising local awareness and receiving vital sightings and leads. Alert our network of over 300,000 members and followers and the general public who are passionate about helping pets and their families.</p>
+        <h2 class="card-title">Share the Love</h2>
+        <p>Take a moment to create a post filled with love! Share a recent photo of your beloved pet along with some fun details like their name, age, and where they were last seen. Don't forget to include your contact information so that fellow pet lovers can connect with you.</p>
       </div>
     </div>
 
     <!-- Card 2 -->
     <div class="card card-compact w-96 bg-base-100 shadow-xl">
-      <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+      <figure><img src="HowItWorks-2.png" alt="GetNotified" /></figure>
       <div class="card-body">
-        <h2 class="card-title">Search for a lost pet</h2>
-        <p> Our lost and found pet page contains thousands of photos of lost and found pets near you. Filter by postcode or suburb, species, breed & date. Real-time updates. Contact members instantly with urgent messages sent by email and SMS.</p>
+        <h2 class="card-title">Keep an Eye Out</h2>
+        <p> Stay hopeful and keep an eye out for notifications. Make sure to provide a way for others to reach you, because in this wonderful community, we're all here to help reunite furry friends with their families. Remember, communication is the key to bringing our pets back home safely!</p>
       </div>
     </div>
 
     <!-- Card 3 -->
     <div class="card card-compact w-96 bg-base-100 shadow-xl">
-      <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+      <figure><img src="HowItWorks-3.png" alt="Reunited" /></figure>
       <div class="card-body">
-        <h2 class="card-title">Add a Lost or Found Pet</h2>
-        <p> All lost and found pet posts are free and are not time-limited. Begin by providing information about your pet, including its breed, age, gender, description, and contact information. Our site is viewed over 60,000 times every month.</p>
+        <h2 class="card-title">Heartwarming Reunion</h2>
+        <p> Once your pet is found, get ready for a heartwarming reunion! Embrace the joy of being reunited with your furry companion and relish in the happiness of being a family once again. After all, there's nothing quite like the love shared between a pet and their human!</p>
       </div>
     </div>
   </div>
 </div>
+</div>
 
 <!-- Hero Banner -->
-<div class="hero min-h-screen" style="background-image: url('BG4.png'); background-position: bottom;">
-  <div class="hero-content text-center text-neutral-content">
+<div class="hero min-h-screen" style="background-image: url('HP-3.png'); background-position: bottom;">
+  <div class="hero-content text-center place-items-center text-neutral-content">
     <div class="max-w-md">
-      <h1 class="mb-5 text-5xl text-white font-bold">Paw Pals Union</h1>
-      <p class="mb-5 text-white">Lost a pet and need help searching for it? You're in the right place. Paw Pals helps owners connect and search for their beloved pets here in Malaysia.</p>
-      <button class="btn btn-primary">Start Searching</button>
+      <h1 class="mb-5 text-purple-800 text-5xl font-bold">Support local and adopt a pet today</h1>
+
+      <div class="stats shadow place-items-center">
+  
+        <div class="stat place-items-center">
+          <div class="stat-title">Our Community</div>
+          <div class="stat-value">10K</div>
+          <div class="stat-desc">Since January 1st 20XX</div>
+        </div>
+        
+        <div class="stat place-items-center">
+          <div class="stat-title">Successfully Reunited</div>
+          <div class="stat-value text-secondary">1000</div>
+          <div class="stat-desc text-secondary"></div>
+        </div>
+               
+      </div>
+      
     </div>
   </div>
 </div>

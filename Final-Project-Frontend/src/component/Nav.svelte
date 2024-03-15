@@ -3,7 +3,7 @@
 </script>
 
 <!-- Navbar -->
-<nav class="navbar bg-base-100 fixed top-0 w-full z-50">
+<nav class="navbar bg-purple-800 fixed top-0 w-full z-50">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -30,20 +30,20 @@
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li><a>Search lost pet</a></li>
+      <li><a class="text-white">Search lost pet</a></li>
       <li>
         <details>
-          <summary>Find out more</summary>
+          <summary class="text-white">Find out more</summary>
           <ul class="p-2">
             <li><a>Learn our process</a></li>
             <li><a>Create an account</a></li>
           </ul>
         </details>
       </li>
-      <li><a>Success Stories</a></li>
+      <li><a class="text-white">Success Stories</a></li>
     </ul>
   </div>
   <div class="navbar-end">
-    <a href="#" class="btn">Login</a>
+    <a href="text-primary" class="btn btn-outline btn-secondary">Login</a>
   </div>
 </nav>
