@@ -14,28 +14,29 @@
       <div class="flex flex-col md:flex-row justify-center items-center gap-10">
 
         <!-- Avatar For Lost -->
-        <a href="https://example.com" class="relative group">
+        <a href="/lostGallery" class="relative group">
           <div class="avatar">
             <div class="w-64 rounded-full overflow-hidden">
               <img src="Lost&Found-1.png" class="transition-opacity duration-200 group-hover:opacity-20" />
             </div>
           </div>
           <div class="absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-            <span class="text-purple-800 text-lg font-semibold">Search Lost Pet</span>
+            <span class="text-purple-800 text-lg font-semibold">Search Lost Pet Gallery</span>
           </div>
         </a>
 
         <!-- Avatar For Found -->
-        <a href="https://example.com" class="relative group">
+        <a href="/foundGallery" class="relative group">
           <div class="avatar">
             <div class="w-64 rounded-full overflow-hidden">
               <img src="Lost&Found-2.png" class="transition-opacity duration-200 group-hover:opacity-20" />
             </div>
           </div>
           <div class="absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-            <span class="text-purple-800 text-lg font-semibold">Found Pet</span>
+            <span class="text-purple-800 text-lg font-semibold">Search Found Pet Gallery</span>
           </div>
         </a>
+        
       </div>
     </div>
   </div>
@@ -76,11 +77,13 @@
       <div class="card-body">
         <h2 class="card-title">Heartwarming Reunion</h2>
         <p> Once your pet is found, get ready for a heartwarming reunion! Embrace the joy of being reunited with your furry companion and relish in the happiness of being a family once again. After all, there's nothing quite like the love shared between a pet and their human!</p>
+        <a href="/reunitedGallery" class="btn btn-outline btn-primary mt-3">Success Stories</a>
       </div>
     </div>
   </div>
 </div>
 </div>
+
 
 <!-- Hero Banner -->
 <div class="hero min-h-screen" style="background-image: url('HP-3.png'); background-position: bottom;">
