@@ -18,7 +18,7 @@
 			pet_breed: evt.target['breed'].value,
 			pet_colour: evt.target['color'].value,
 			pet_gender: evt.target['gender'].value,
-      pet_age: 4,
+      pet_age: evt.target['age'].value,
       pet_description: evt.target['description'].value,
       pet_location: evt.target['location'].value,
       pet_status: evt.target['status'].value
@@ -75,7 +75,7 @@
 					<label class="label">
 						<span class="label-text font-medium text-base mt-3">Pet Type</span>
 					</label>
-					<select class="select select-bordered w-full required" name="type" value="{data.pet_type}">
+					<select class="select select-bordered w-full required" name="type" value="{data.pet.pet_type}">
 						<option disabled selected>Select one</option>
 						<option>Cat</option>
 						<option>Dog</option>
@@ -91,7 +91,7 @@
 						placeholder="example: tabby if it's a cat, corgi if it's a dog"
 						class="input input-bordered"
             name="breed"
-            value="{data.pet_breed}"
+            value="{data.pet.pet_breed}"
 					/>
 					<span class="label-text-secondary text-sm text-purple-400 mt-2 mb-2"
 						>Leave blank if unknown</span
@@ -101,13 +101,13 @@
 					<label class="label">
 						<span class="label-text font-medium text-base mt-3">Pet Colour</span>
 					</label>
-					<input name="color" value="{data.pet_colour}" type="text" placeholder="example: Corgi" class="input input-bordered" required />
+					<input name="color" value="{data.pet.pet_colour}" type="text" placeholder="example: Corgi" class="input input-bordered" required />
 
 					<!-- Pet Gender Section -->
 					<label class="label">
 						<span class="label-text font-medium text-base mt-3">Pet Gender</span>
 					</label>
-					<select class="select select-bordered w-full required" name="gender" value="{data.pet_gender}">
+					<select class="select select-bordered w-full required" name="gender" value="{data.pet.pet_gender}">
 						<option disabled selected>Select one</option>
 						<option>Female</option>
 						<option>Male</option>
@@ -118,7 +118,7 @@
 					<label class="label">
 						<span class="label-text font-medium text-base mt-3">Pet Age</span>
 					</label>
-					<input name="age" value="{data.pet_age}" type="text" placeholder="example: 1 years old" class="input input-bordered" />
+					<input name="age" value="{data.pet.pet_age}" type="text" placeholder="example: 1 years old" class="input input-bordered" />
 					<span class="label-text-secondary text-sm text-purple-400 mt-2 mb-2"
 						>Leave blank if unknown</span
 					>
@@ -130,7 +130,7 @@
 					<textarea
           name="description"
 						class="textarea textarea-primary"
-            value="{data.pet_description}"
+            value="{data.pet.pet_description}"
 						placeholder="example: Pet name, their behaviour, any unique physical traits like a white spot under their chin, etc..."
 						required
 					></textarea>
@@ -142,7 +142,7 @@
 					<input
 						type="text"
             name="location"
-            value="{data.pet_location}"
+            value="{data.pet.pet_location}"
 						placeholder="example: Subang, Kota Damansara, Puchong, etc..."
 						class="input input-bordered"
 						required
@@ -165,7 +165,7 @@
           <label class="label">
 						<span class="label-text font-medium text-base mt-3">Pet Status</span>
 					</label>
-					<select class="select select-bordered w-full required" name="status" value="{data.pet_status}">
+					<select class="select select-bordered w-full required" name="status" value="{data.pet.pet_status}">
 						<option disabled selected>Select one</option>
 						<option>Lost</option>
 						<option>Found</option>
