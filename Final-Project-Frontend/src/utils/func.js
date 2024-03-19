@@ -34,8 +34,8 @@ export function getTokenFromLocalStorage() {
 }
 
 export async function isLoggedIn() {
-    if (!getTokenFromLocalStorage()) {
-        loggedIn.set(true)
+    if (!(getTokenFromLocalStorage())) {
+        loggedIn.set(false)
         return false
     }
     loggedIn.set(true)

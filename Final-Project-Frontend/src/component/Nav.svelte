@@ -44,6 +44,6 @@
     </ul>
   </div>
   <div class="navbar-end">
-    <a href="text-primary" class="btn btn-outline btn-secondary">Login</a>
+    <a href="/users/login" class="btn btn-outline btn-secondary">Login</a>
   </div>
 </nav>
