@@ -6,9 +6,9 @@
 <!-- Hero Banner -->
 <div class="hero min-h-screen" style="background-image: url('HP-1.png'); background-position: bottom;">
   <div class="hero-content text-center text-neutral-content">
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8"> <!-- Adjust the max-width and padding classes as needed -->
-      <h1 class="mb-5 text-5xl text-purple-800 font-bold">Paw Pals Union</h1>
-      <p class="mb-10 text-white text-xl">Lost your furry friend and feeling worried? Don't fret! You've landed in the perfect spot. Welcome to Paw Pals, where we're all about helping owners like you connect and search for your beloved pets right here in Malaysia. Let's work together to bring your furry family member back home where they belong!</p>
+    <div class="max-w-2xl mx-auto px-4 py-20 sm:px-6 lg:px-8"> <!-- Adjust the max-width and padding classes as needed -->
+      <h1 class="mb-5 text-5xl text-purple-800 font-bold">Hey there!</h1>
+      <p class="mb-10 text-purple-700 text-xl">Lost your furry friend and feeling worried? Don't fret! You've landed in the perfect spot. Welcome to <span class="font-bold text-xl">Paw Pals Union</span>, where we're all about helping owners like you connect and search for your beloved pets right here in Malaysia. Let's work together to bring your furry family member back home where they belong!</p>
       
       <!-- Avatars Section -->
       <div class="flex flex-col md:flex-row justify-center items-center gap-10">
@@ -51,8 +51,8 @@
 
   <!-- Cards Section -->
   <div>
-    <h1 class="mb-5 text-5xl text-white font-bold text-center">How it works</h1>
-   <div class="cards-container flex justify-center mt-20">
+    <h1 class="mb-5 text-4xl text-purple-800 font-bold text-center">Our step-by-step guide</h1>
+   <div class="cards-container flex justify-center mt-10">
     <!-- Card 1 -->
     <div class="card card-compact w-96 bg-base-100 shadow-xl">
       <figure><img src="HowItWorks-1.png" alt="TakeAPhoto" /></figure>
@@ -77,7 +77,7 @@
       <div class="card-body">
         <h2 class="card-title">Heartwarming Reunion</h2>
         <p> Once your pet is found, get ready for a heartwarming reunion! Embrace the joy of being reunited with your furry companion and relish in the happiness of being a family once again. After all, there's nothing quite like the love shared between a pet and their human!</p>
-        <a href="/reunitedGallery" class="btn btn-outline btn-primary mt-3">Success Stories</a>
+        <a href="/reunitedGallery" class="btn btn-primary mt-3">Read Success Stories</a>
       </div>
     </div>
   </div>
@@ -86,30 +86,52 @@
 
 
 <!-- Hero Banner -->
-<div class="hero min-h-screen" style="background-image: url('HP-3.png'); background-position: bottom;">
-  <div class="hero-content text-center place-items-center text-neutral-content">
-    <div class="max-w-md">
-      <h1 class="mb-5 text-purple-800 text-5xl font-bold">Support local and adopt a pet today</h1>
+<div class="hero min-h-screen flex flex-col" style="background-image: url('HP-3.png'); background-position: bottom;">
+  <div class="hero-content place-items-center text-neutral-content">
+    
+    <!-- Text Section -->
+    <h1 class="mb-5 text-4xl text-purple-800 font-bold text-center w-1/2">Tips on What to Do When You Are Looking for a Lost Pet</h1>
+    <div class="cards-container flex justify-center mt-10">
+    
+    <!-- Image Section -->
+    <div class="w-full flex justify-center">
 
-      <div class="stats shadow place-items-center">
-  
-        <div class="stat place-items-center">
-          <div class="stat-title">Our Community</div>
-          <div class="stat-value">10K</div>
-          <div class="stat-desc">Since January 1st 20XX</div>
-        </div>
-        
-        <div class="stat place-items-center">
-          <div class="stat-title">Successfully Reunited</div>
-          <div class="stat-value text-secondary">1000</div>
-          <div class="stat-desc text-secondary"></div>
-        </div>
-               
+    <div class="w-96 carousel rounded-box">
+      <div id="item1" class="carousel-item w-full">
+        <img src="Tips1.png" class="w-full" alt="Tailwind CSS Carousel component" />
+      </div> 
+      <div id="item2" class="carousel-item w-full">
+        <img src="Tips3.png" class="w-full" alt="Tailwind CSS Carousel component" />
+      </div> 
+      <div id="item3" class="carousel-item w-full">
+        <img src="Tips4.png" class="w-full" alt="Tailwind CSS Carousel component" />
+      </div> 
+      <div id="item4" class="carousel-item w-full">
+        <img src="Tips5.png" class="w-full" alt="Tailwind CSS Carousel component" />
       </div>
-      
+      <div id="item4" class="carousel-item w-full">
+        <img src="Tips6.png" class="w-full" alt="Tailwind CSS Carousel component" />
+      </div>
+      <div id="item4" class="carousel-item w-full">
+        <img src="Tips2.png" class="w-full" alt="Tailwind CSS Carousel component" />
+      </div>
+    </div> 
+  </div>
+    <div class="flex justify-center w-full text-primary gap-1"> ❮
+      <a href="#item1" class="btn btn-accent btn-xs">1</a> 
+      <a href="#item2" class="btn btn-accent btn-xs">2</a> 
+      <a href="#item3" class="btn btn-accent btn-xs">3</a> 
+      <a href="#item4" class="btn btn-accent btn-xs">4</a>
+      <a href="#item4" class="btn btn-accent btn-xs">5</a>
+      <a href="#item4" class="btn btn-accent btn-xs">6</a>
+      ❯
     </div>
+
+
   </div>
 </div>
+</div>
+
 
 <style>
   /* Grid layout */
