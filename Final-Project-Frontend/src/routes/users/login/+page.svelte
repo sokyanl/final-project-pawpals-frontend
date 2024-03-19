@@ -72,7 +72,7 @@
       </div>
       <div class="mt-6 w-full">
         <span class="label-text text-base font-bold mb-5">Dont have an account?</span>
-        <button class="btn btn-primary w-full">Register</button>
+        <a href="/users/create" class="btn btn-primary w-full">Register</a>
       </div>
     </form>
   </div>

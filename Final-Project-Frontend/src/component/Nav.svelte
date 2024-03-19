@@ -20,7 +20,7 @@
             <li><a href="/reunitedGallery">Success stories</a></li>
           </ul>
         </li>
-        <li><a href="/form/upload" class="text-white">Create Post</a></li>
+        <li><a href="/form/upload" class="">Create Post</a></li>
       </ul>
     </div>
     <a href="/">
@@ -46,8 +46,8 @@
   </div>
   <div class="navbar-end">
 
-    <a href="text-primary" class="btn btn-outline btn-accent mr-3">Create Account</a>
-    <a href="text-primary" class="btn btn-outline btn-accent mr-3">Login</a>
+    <a href="/users/create" class="btn btn-outline btn-accent mr-3">Create Account</a>
+    <a href="/users/login" class="btn btn-outline btn-accent mr-3">Login</a>
 
   </div>
 </div>

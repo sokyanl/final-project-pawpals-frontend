@@ -40,7 +40,7 @@
 		console.log(res);
 
 		if (resp.status === 200) {
-			goto(`/form/${data.form.id}`);
+			goto(`/form/${data.pet.id}`);
 		} else if (resp.status === 400) {
 			console.log(res);
 			formErrors = res.data;

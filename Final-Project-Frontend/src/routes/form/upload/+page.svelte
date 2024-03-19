@@ -17,6 +17,7 @@
 			pet_breed: evt.target['breed'].value,
 			pet_colour: evt.target['color'].value,
 			pet_gender: evt.target['gender'].value,
+      // pet_age: evt.target['age'].value,
       pet_age: 2,
       pet_description: evt.target['description'].value,
       pet_location: evt.target['location'].value,
@@ -75,7 +76,7 @@
 					<label class="label">
 						<span class="label-text font-medium text-base mt-3">Pet Type</span>
 					</label>
-					<select class="select select-bordered w-full required" name="type">
+					<select class="select select-bordered w-full required" name="type" required>
 						<option disabled selected>Select one</option>
 						<option>Cat</option>
 						<option>Dog</option>
@@ -105,7 +106,7 @@
 					<label class="label">
 						<span class="label-text font-medium text-base mt-3">Pet Gender</span>
 					</label>
-					<select class="select select-bordered w-full required" name="gender">
+					<select class="select select-bordered w-full required" name="gender" required>
 						<option disabled selected>Select one</option>
 						<option>Female</option>
 						<option>Male</option>
@@ -116,7 +117,7 @@
 					<label class="label">
 						<span class="label-text font-medium text-base mt-3">Pet Age</span>
 					</label>
-					<input name="age" type="number" placeholder="example: 1 years old" class="input input-bordered" />
+					<input name="age" type="text" placeholder="example: 1 years old" class="input input-bordered" />
 					<span class="label-text-secondary text-sm text-purple-400 mt-2 mb-2"
 						>Leave blank if unknown</span
 					>
@@ -127,7 +128,7 @@
 					</label>
 					<textarea
           name="description"
-						class="textarea textarea-primary"
+						class="textarea input-bordered"
 						placeholder="example: Pet name, their behaviour, any unique physical traits like a white spot under their chin, etc..."
 						required
 					></textarea>
@@ -152,16 +153,14 @@
 						type="file"
 						class="file:btn file:btn-primary"
             name="image"
+            required
 					/>
-					<span class="label-text-secondary text-sm text-purple-400 mt-2 mb-2"
-						>Leave blank if none</span
-					>
 
 					<!-- Pet Status Section -->
           <label class="label">
 						<span class="label-text font-medium text-base mt-3">Pet Status</span>
 					</label>
-					<select class="select select-bordered w-full required" name="status">
+					<select class="select select-bordered w-full required" name="status" required>
 						<option disabled selected>Select one</option>
 						<option>Lost</option>
 						<option>Found</option>

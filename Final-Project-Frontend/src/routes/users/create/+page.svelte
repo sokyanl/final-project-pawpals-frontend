@@ -43,7 +43,7 @@
 
 <div class="hero min-h-screen">
 <img src="/BG1.png" alt="Description" class="absolute inset-0 w-full h-full object-cover" />
-   <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+   <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mt-20">
     <form class="card-body" on:submit={createUser}>
       <!-- Name -->
       <div class="form-control mt-1">
@@ -74,6 +74,10 @@
       </div>
       <div class="form-control mt-6">
         <button class="btn btn-primary">Register</button>
+      </div>
+      <div class="mt-6 w-full">
+        <span class="label-text text-base font-bold mb-5 align-center">Already have an account?</span>
+        <a href="/users/login" class="btn btn-primary w-full">Login</a>
       </div>
     </form>
   </div>
