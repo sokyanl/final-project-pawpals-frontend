@@ -45,8 +45,10 @@
     </ul>
   </div>
   <div class="navbar-end">
+
     <a href="text-primary" class="btn btn-outline btn-accent mr-3">Create Account</a>
     <a href="text-primary" class="btn btn-outline btn-accent mr-3">Login</a>
+
   </div>
 </div>
 
