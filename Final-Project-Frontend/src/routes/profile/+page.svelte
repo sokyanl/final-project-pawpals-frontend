@@ -1,45 +1,51 @@
-<!-- Hero Banner -->
-<div class="hero h-full max-h-[600px] bg-base-200">
-  <div class="hero-content text-center flex-col lg:flex-row-reverse">
-    <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" class="max-w-sm rounded-lg shadow-2xl" />
-    <div>
-      <h1 class="text-5xl font-bold">Box Office News!</h1>
-      <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-      <button class="btn btn-primary">Get Started</button>
+
+
+<!-- User Account Details -->
+<div class="flex flex-row items-start mt-20">
+  <label class="form-control w-full max-w-52 mr-5 ml-5 mt-5">
+
+    <div class="avatar">
+      <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 content-center">
+        <img src="UserProfile.png" />
+      </div>
+    </div>
+
+      <div class="label">
+      </div>
+      <h2 class="card-title text-orange-300">User Name</h2>
+
+      <p class="mt-2 text-sm">User Email</p>
+      <div class="card-actions justify-end">
+      </div>
+
+
+      
+  </label>
+
+  <!-- Divider -->
+  <div class="divider divider-horizontal"></div>
+
+  <!-- Card -->
+  <div class="overflow-x-auto w-full mr-5 basis-3/4" style="padding: 50px;">
+    <div class="flex flex-wrap justify-center">
+      <div class="flex justify-center">
+        <div class="card w-80 bg-base-100 shadow-xl">
+          <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+          <div class="card-body">
+            <div class="card-actions justify-start">
+              <div class="badge badge-accent">Pet Breed</div>
+              <div class="badge badge-accent">Pet Type</div>
+              <div class="badge badge-accent">Pet Colour</div>
+              <div class="badge badge-accent">Pet Gender</div>
+            </div>
+            <p class="mt-5">Pet Description</p>
+            <div class="card-actions justify-center mt-5">
+              <button class="btn btn-primary">Learn More</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Divider -->
-<div class="flex flex-col w-full">
-  <div class="divider"></div>
-</div>
-
-<div class="grid grid-cols-3 gap-6">
-  <!-- Card 1 -->
-  <div class="card w-96 bg-base-100 shadow-xl">
-    <div class="card-body">
-      <h2 class="card-title">Shoes!</h2>
-      <p>If a dog chews shoes whose shoes does he choose?</p>
-    </div>
-    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="card w-96 bg-base-100 shadow-xl">
-    <div class="card-body">
-      <h2 class="card-title">Shoes!</h2>
-      <p>If a dog chews shoes whose shoes does he choose?</p>
-    </div>
-    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  </div>
-
-  <!-- Card 3 --> <!-- Add a new card -->
-  <div class="card w-96 bg-base-100 shadow-xl">
-    <div class="card-body">
-      <h2 class="card-title">Shoes!</h2>
-      <p>If a dog chews shoes whose shoes does he choose?</p>
-    </div>
-    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  </div>
 </div>
