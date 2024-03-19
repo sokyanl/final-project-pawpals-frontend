@@ -19,7 +19,7 @@
       </select>
       <!-- Button to browse other gallery-->
       <div class="label mt-10">
-          <span class="label-text text-purple-700 font-bold">Browse Found pets Gallery</span>
+          <span class="label-text text-purple-700 font-bold">Browse Gallery</span>
       </div>
       <a href="/foundGallery" class="btn btn-accent mb-3">Lost Pets Gallery</a>
       <a href="/reunitedGallery" class="btn btn-accent mb-3">Reunited Pets Gallery</a>

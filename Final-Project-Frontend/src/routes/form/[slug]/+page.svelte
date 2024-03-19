@@ -8,7 +8,7 @@
 	const id = getUserId();
 	const getToken = getTokenFromLocalStorage();
 
-	export async function destroyJob(evt) {
+	export async function deletePet(evt) {
 		evt.preventDefault();
 		let spin = true;
 
@@ -62,4 +62,4 @@
 <p>{data.pet.id}</p>
 <p>{data.pet.id}</p>
 <p>something</p>
-<a href="/form/edit/{data.pet.id}">Edit</a>
+<a href="/form/{data.pet.id}/edit">Edit</a>

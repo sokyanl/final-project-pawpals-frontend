@@ -21,8 +21,8 @@
       <div class="label mt-10">
           <span class="label-text text-purple-700 font-bold">Browse Gallery</span>
       </div>
-      <a href="/foundGallery" class="btn btn-accent mb-3">Lost Pets Gallery</a>
-      <a href="/reunitedGallery" class="btn btn-accent mb-3">Found Pets Gallery</a>
+      <a href="/lostGallery" class="btn btn-accent mb-3">Lost Pets Gallery</a>
+      <a href="/foundGallery" class="btn btn-accent mb-3">Found Pets Gallery</a>
   </label>
 
 
