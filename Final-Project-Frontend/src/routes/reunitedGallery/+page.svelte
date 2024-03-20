@@ -1,5 +1,5 @@
 <!-- Top Banner -->
-<div class="min-h-96" style="background-image: url('/Banner1.png'); background-size: cover;">
+<div class="min-h-96" style="background-image: url('/Banner1.png'); background-size: cover; background-position: bottom;">
   <div class="hero-content text-center text-neutral-content">
   </div>
 </div>

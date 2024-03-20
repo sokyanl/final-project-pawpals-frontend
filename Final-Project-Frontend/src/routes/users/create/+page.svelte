@@ -28,7 +28,7 @@
     });
 
         if(resp.status === 200) {
-      goto('/users/login')
+      goto('/form/upload')
         } else if (resp.status === 400) {
             const res = await resp.json();
       formErrors = res.data;

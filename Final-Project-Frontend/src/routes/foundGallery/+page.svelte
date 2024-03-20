@@ -1,8 +1,8 @@
-<!-- Top Banner -->
-<div class="min-h-96" style="background-image: url('/Banner3.png'); background-size: cover;">
+<div class="min-h-96" style="background-image: url('/Banner3.png'); background-size: cover; background-position: bottom;">
   <div class="hero-content text-center text-neutral-content">
   </div>
 </div>
+
 
 
 <!-- Left Side Info-->
@@ -21,7 +21,7 @@
       <div class="label mt-10">
           <span class="label-text text-purple-700 font-bold">Browse Gallery</span>
       </div>
-      <a href="/foundGallery" class="btn btn-accent mb-3">Lost Pets Gallery</a>
+      <a href="/lostGallery" class="btn btn-accent mb-3">Lost Pets Gallery</a>
       <a href="/reunitedGallery" class="btn btn-accent mb-3">Reunited Pets Gallery</a>
   </label>
 
