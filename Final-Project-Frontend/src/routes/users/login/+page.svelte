@@ -1,53 +1,32 @@
 <script>
-  import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
   import { goto } from '$app/navigation';
-  import { loggedIn } from '../../../utils/func';
+  import { authLogin } from '../../../utils/func';
+
+  let formErrors = {};
+  let clicked = false;
+
+  function postLoggedIn() {
+    goto('/');
+  }
 
   async function login(evt) {
     evt.preventDefault();
+    clicked = true;
 
     const userData = {
       email: evt.target['email'].value,
       password: evt.target['password'].value
     };
-
-    const resp = await fetch(PUBLIC_BACKEND_BASE_URL + '/auth', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userData)
-    });
-
-    const res = await resp.json();
-    console.log(res.accessToken);
-    console.log(res.body)
-    console.log(resp.status)
-    
-
-    if (resp.status == '200') {
-      localStorage.setItem(
-        'auth',
-        JSON.stringify({
-          token: res.accessToken
-        })
-      );
-      console.log('worked')
-      loggedIn.set(true);
-      goto('/');
-    } else if (resp.status === 400) {
-      const res = await resp.json();
-      formErrors = res.data;
-      console.log('worked400')
+    console.log(userData); //Prints in console if login is successful
+    // If not logged in, perform login operation
+    const resp = await authLogin(userData.email, userData.password);
+    if (resp.success) {
+      postLoggedIn();
     } else {
-      console.log('else')
+      formErrors = resp.res.error;
+      clicked = false;
     }
-    console.log(resp.status);
-    return formErrors;
   }
-
-  let formErrors = login();
 </script>
 
 <div class="hero min-h-screen">
@@ -65,13 +44,12 @@
           <span class="label-text">Password</span>
         </label>
         <input type="password" placeholder="password" class="input input-bordered" name="password" required />
-          <a href="/" class="label-text-alt link link-hover">Forgot password?</a>
       </div>
       <div class="form-control mt-2">
         <button class="btn btn-primary">Login</button>
       </div>
       <div class="mt-6 w-full">
-        <span class="label-text text-base font-bold mb-5">Dont have an account?</span>
+        <span class="label-text text-base font-bold mb-5">Don't have an account?</span>
         <a href="/users/create" class="btn btn-primary w-full">Register</a>
       </div>
     </form>

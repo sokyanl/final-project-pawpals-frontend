@@ -3,14 +3,22 @@
 	import { goto } from '$app/navigation';
 	import { uploadMedia } from '../../../../utils/s3-uploader.js';
 	import { getTokenFromLocalStorage } from '../../../../utils/func';
-  export let data
+  	
+	export let data
 
 	let formErrors = {};
+	let fileName, fileUrl;
 
 	async function uploadImage(evt) {
 		evt.preventDefault();
-		const [fileName, fileUrl] = await uploadMedia(evt.target['image'].files[0]);
+		const newImage = evt.target['image'].files[0];
 
+        if (newImage != null) {
+        	[fileName, fileUrl] = await uploadMedia(evt.target['image'].files[0]);
+        } else {
+            fileUrl = data.pet.pet_image_url;
+        }
+		
 		const accessToken = getTokenFromLocalStorage();
 
 		const userData = {
@@ -18,13 +26,16 @@
 			pet_breed: evt.target['breed'].value,
 			pet_colour: evt.target['color'].value,
 			pet_gender: evt.target['gender'].value,
-      pet_age: evt.target['age'].value,
-      pet_description: evt.target['description'].value,
-      pet_location: evt.target['location'].value,
-      pet_status: evt.target['status'].value
+			pet_age: evt.target['age'].value,
+			pet_description: evt.target['description'].value,
+			pet_location: evt.target['location'].value,
+			pet_status: evt.target['status'].value,
+			pet_image_url: fileUrl
 		};
 
 		console.log(userData);
+
+
 
 		const resp = await fetch(PUBLIC_BACKEND_BASE_URL + '/pet', {
 			method: 'PUT',
