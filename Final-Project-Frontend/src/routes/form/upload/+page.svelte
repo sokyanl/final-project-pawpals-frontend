@@ -1,54 +1,52 @@
 <script>
-	import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
-	import { goto } from '$app/navigation';
-	import { uploadMedia } from '../../../utils/s3-uploader.js';
-	import { getTokenFromLocalStorage } from '../../../utils/func';
+import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
+import { goto } from '$app/navigation';
+import { uploadMedia } from '../../../utils/s3-uploader.js';
+import { getTokenFromLocalStorage } from '../../../utils/func';
 
-	let formErrors = {};
 
-	async function uploadImage(evt) {
-		evt.preventDefault();
-		const [fileName, fileUrl] = await uploadMedia(evt.target['image'].files[0]);
+//function to handle upload pet image
+let formErrors = {};
+async function uploadImage(evt) {
+	const [fileName, fileUrl] = await uploadMedia(evt.target['image'].files[0]);
 
-		const accessToken = getTokenFromLocalStorage();
-
-		const userData = {
-			pet_type: evt.target['type'].value,
-			pet_breed: evt.target['breed'].value,
-			pet_colour: evt.target['color'].value,
-			pet_gender: evt.target['gender'].value,
-      pet_age: evt.target['age'].value,
-      pet_description: evt.target['description'].value,
-      pet_location: evt.target['location'].value,
-      pet_image_url: fileUrl,
-      pet_status: evt.target['status'].value
-		};
-
-		console.log(userData);
-
-		const resp = await fetch(PUBLIC_BACKEND_BASE_URL + '/pet', {
-			method: 'POST',
-			mode: 'cors',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${accessToken}`
-			},
-			body: JSON.stringify(userData)
-		});
-
-		const res = await resp.json();
-		console.log(res);
-
-		if (resp.status === 200) {
-			goto(`/`);
-		} else if (resp.status === 400) {
-			console.log(res);
-			formErrors = res.data;
-		} else {
-		}
-		console.log(resp.status);
-		return formErrors;
-	}
+//retrive token for authentication purpose log in user can post image   
+const accessToken = getTokenFromLocalStorage();
+	const petData = {
+		pet_type: evt.target['type'].value,
+	 	pet_breed: evt.target['breed'].value,
+		pet_colour: evt.target['color'].value,
+		pet_gender: evt.target['gender'].value,
+		pet_age: evt.target['age'].value,
+		pet_description: evt.target['description'].value,
+		pet_location: evt.target['location'].value,
+		pet_image_url: fileUrl,
+		pet_status: evt.target['status'].value
+	};
+	//console.log(petData);
+	//create POST pet request to backend upload pet data endpoint
+	const resp = await fetch (
+        PUBLIC_BACKEND_BASE_URL + '/pet',
+        {
+            method: 'POST',
+            mode:'cors',
+            headers: {
+                'Content-Type':'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+            body: JSON.stringify(petData)
+        }
+    );
+    const res = await resp.json();
+	console.log('Response status:', resp.status);
+    if (resp.status === 200) {
+		// console.log('go slug page');
+		 goto (`/form/${res.id}`); //link back to the created pet page
+	} else if (resp.status === 400) {
+	   console.log(res);
+	   formErrors = res.data;
+	} 
+};
 </script>
 
 <svelte:head>
