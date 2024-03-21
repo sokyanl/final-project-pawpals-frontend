@@ -22,7 +22,7 @@
 		const accessToken = getTokenFromLocalStorage();
 
 		const userData = {
-			pet_type: evt.target['name'].value,
+			pet_type: evt.target['type'].value,
 			pet_breed: evt.target['breed'].value,
 			pet_colour: evt.target['color'].value,
 			pet_gender: evt.target['gender'].value,
@@ -37,7 +37,7 @@
 
 
 
-		const resp = await fetch(PUBLIC_BACKEND_BASE_URL + '/pet', {
+		const resp = await fetch(PUBLIC_BACKEND_BASE_URL + `/pet/${data.pet.id}`, {
 			method: 'PUT',
 			mode: 'cors',
 			headers: {
@@ -48,17 +48,15 @@
 		});
 
 		const res = await resp.json();
-		console.log(res);
+		// console.log(res);
 
-		if (resp.status === 200) {
+		if (resp.ok) {
 			goto(`/form/${data.pet.id}`);
-		} else if (resp.status === 400) {
+		} else {
+			const res = await resp.json();
 			console.log(res);
 			formErrors = res.data;
-		} else {
-		}
-		console.log(resp.status);
-		return formErrors;
+		} 
 	}
 </script>
 
