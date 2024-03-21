@@ -1,55 +1,57 @@
 <script>
+  export let data;
 
-  
 </script>
 
 
 <!-- User Account Details -->
 <div class="flex flex-row items-start mt-20">
+  <!-- svelte-ignore a11y-label-has-associated-control -->
   <label class="form-control w-full max-w-52 mr-5 ml-5 mt-5">
-
     <div class="avatar">
       <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 content-center">
+        <!-- Generic Profile Picture -->
         <img src="UserProfile.png" />
       </div>
     </div>
 
+    <!-- Display user name and email -->
+    {#if data.user}
       <div class="label">
+        <h2 class="card-title text-orange-300">{data.user.name}</h2>
+        <p class="mt-2 text-sm">{data.user.email}</p>
       </div>
-      <h2 class="card-title text-orange-300">User Name</h2>
+    {/if}
 
-      <p class="mt-2 text-sm">User Email</p>
-      <div class="card-actions justify-end">
-      </div>
-
-
-      
+    <div class="card-actions justify-end">
+    </div>
   </label>
-
+  
   <!-- Divider -->
   <div class="divider divider-horizontal"></div>
 
-  <!-- Card -->
-  <div class="overflow-x-auto w-full mr-5 basis-3/4" style="padding: 50px;">
-    <div class="flex flex-wrap justify-center">
+  <!-- Cards -->
+  <div class="overflow-x-auto w-full mr-5 basis-3/4" style="padding: 50px">
+    <div class="flex flex-wrap justify-center gap-10">
+      {#each data.pet as pet}
       <div class="flex justify-center">
         <div class="card w-80 bg-base-100 shadow-xl">
           <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
           <div class="card-body">
             <div class="card-actions justify-start">
-              <div class="badge badge-accent">Pet Breed</div>
-              <div class="badge badge-accent">Pet Type</div>
-              <div class="badge badge-accent">Pet Colour</div>
-              <div class="badge badge-accent">Pet Gender</div>
+              <div class="badge badge-accent">{pet.pet_breed}</div>
+              <div class="badge badge-accent">{pet.pet_type}</div>
+              <div class="badge badge-accent">{pet.pet_color}</div>
+              <div class="badge badge-accent">{pet.pet_gender}</div>
             </div>
-            <p class="mt-5">Pet Description</p>
+            <p class="mt-5">{pet.pet_description}</p>
             <div class="card-actions justify-center mt-5">
-              <button class="btn btn-primary">Learn More</button>
+              <button class="btn btn-primary" href="/pet/{pet.id}">Learn More</button>
             </div>
           </div>
         </div>
       </div>
+      {/each}
     </div>
   </div>
-
 </div>
