@@ -97,7 +97,7 @@ const accessToken = getTokenFromLocalStorage();
 					<label class="label">
 						<span class="label-text font-medium text-base mt-3">Pet Colour</span>
 					</label>
-					<input name="color" type="text" placeholder="example: Corgi" class="input input-bordered" required />
+					<input name="color" type="text" placeholder="example: black, white, brown" class="input input-bordered" required />
 
 					<!-- Pet Gender Section -->
 					<label class="label">
