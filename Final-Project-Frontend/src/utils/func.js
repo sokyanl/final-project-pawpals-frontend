@@ -1,13 +1,13 @@
 import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
 import { writable } from 'svelte/store';
 
+export const loggedIn = writable(false)
+
 
 const emptyAuth = {
     "token": "",
     "userId": ""
 }
-
-export const loggedIn = writable(false)
 
 export function logOut() {
     localStorage.setItem("auth", JSON.stringify(emptyAuth))
@@ -28,7 +28,7 @@ export function getTokenFromLocalStorage() {
     if (auth) {
         return JSON.parse(auth)["token"]
     }
-    return null
+    return null;
 }
 
 export async function isLoggedIn() {
