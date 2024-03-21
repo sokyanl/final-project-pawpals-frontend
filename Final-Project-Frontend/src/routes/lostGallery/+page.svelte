@@ -45,10 +45,10 @@
   <!-- Cards -->
   <div class="overflow-x-auto w-full mr-5 basis-3/4" style="padding: 50px">
     <div class="flex flex-wrap justify-center gap-10">
-      {#each data.pet.filter(pet => (selectedType === 'all' || pet.pet_type.toLowerCase() === selectedType.toLowerCase()) && pet.pet_status === 'lost') as pet}
+      {#each data.pet.filter(pet => (selectedType === 'all' || pet.pet_type.toLowerCase() === selectedType.toLowerCase()) && pet.pet_status === 'Lost') as pet}
       <div class="flex justify-center">
         <div class="card w-80 bg-base-100 shadow-xl">
-          <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+          <figure><img src="{pet.pet_image_url}" alt="PetImage" /></figure>
           <div class="card-body">
             <div class="card-actions justify-start">
               <div class="badge badge-accent">{pet.pet_breed}</div>
@@ -58,7 +58,7 @@
             </div>
             <p class="mt-5">{pet.pet_description}</p>
             <div class="card-actions justify-center mt-5">
-              <button class="btn btn-primary" href="/pet/{pet.id}">Learn More</button>
+              <a class="btn btn-primary" href="/form/{pet.id}">Learn More</a>
             </div>
           </div>
         </div>
