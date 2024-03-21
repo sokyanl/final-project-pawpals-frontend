@@ -16,12 +16,13 @@
     </div>
 
     <!-- Display user name and email -->
-    {#if data.user}
-      <div class="label">
-        <h2 class="card-title text-orange-300">{data.user.name}</h2>
-        <p class="mt-2 text-sm">{data.user.email}</p>
-      </div>
-    {/if}
+{#if data.user}
+  <div class="label">
+    <h2 class="card-title text-orange-300">{data.user.name}</h2>
+    <p class="mt-2 text-sm">{data.user.email}</p>
+  </div>
+{/if}
+
 
     <div class="card-actions justify-end">
     </div>
@@ -36,7 +37,7 @@
       {#each data.pet as pet}
       <div class="flex justify-center">
         <div class="card w-80 bg-base-100 shadow-xl">
-          <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+          <figure><img src="{pet.pet_image_url}" alt="PetImage" /></figure>
           <div class="card-body">
             <div class="card-actions justify-start">
               <div class="badge badge-accent">{pet.pet_breed}</div>
@@ -46,7 +47,7 @@
             </div>
             <p class="mt-5">{pet.pet_description}</p>
             <div class="card-actions justify-center mt-5">
-              <button class="btn btn-primary" href="/pet/{pet.id}">Learn More</button>
+              <a class="btn btn-primary" href="/form/{pet.id}">Learn More</a>
             </div>
           </div>
         </div>
