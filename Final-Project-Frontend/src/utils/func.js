@@ -59,7 +59,7 @@ if (resp.status == 200) {
         'auth',
         JSON.stringify({
             token: res.accessToken,
-            userID: res.userId
+            userID: res.userFiltered.id
         })
     );
 
