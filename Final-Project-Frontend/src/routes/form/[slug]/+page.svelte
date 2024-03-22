@@ -7,6 +7,7 @@
 	import { readable } from 'svelte/store'; // Store to hold the API key
 	import * as maptilersdk from '@maptiler/sdk';
 	import '@maptiler/sdk/dist/maptiler-sdk.css';
+	import { loggedIn } from '../../../utils/func';
 
 	//this export let data is link to src/+page.js
 	export let data;
@@ -35,8 +36,8 @@
 		goto(`/form/${data.pet.id}/edit`);
 	}
 	//to check is data and getuserId tally or not
-    console.log("data.pet.userId:",  data.pet.userId);
-    console.log('getUserId():',  getUserId());
+	console.log('data.pet.userId:', data.pet.userId);
+	console.log('getUserId():', getUserId());
 	function deletedPost() {
 		goto('/');
 	}
@@ -63,6 +64,39 @@
 			clicked = false;
 		}
 	}
+
+	let newComment = '';
+
+	async function postComment() {
+		const getToken = getTokenFromLocalStorage();
+
+		const resp = await fetch(PUBLIC_BACKEND_BASE_URL + `/comment/${data.pet.id}`, {
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${getToken}`
+			},
+			body: JSON.stringify({ content: newComment })
+		});
+
+		if (resp.status == 200) {
+			// Fetch the updated list of comments for the pet
+			const updatedCommentsResponse = await fetch(
+				PUBLIC_BACKEND_BASE_URL + `/comment/${data.pet.id}`
+			);
+			const updatedComments = await updatedCommentsResponse.json();
+
+			// Update the local state with the new comments
+			data.pet.Comment = updatedComments;
+
+			// Clear the comment input field
+			newComment = '';
+		} else {
+			const res = await resp.json();
+			console.log(res.error);
+		}
+	}
 </script>
 
 <svelte:head>
@@ -71,9 +105,9 @@
 </svelte:head>
 
 <div class="hero min-h-screen bg-base-300">
-    <div class="hero-content flex-col lg:flex-row mt-40">
-        <img src={data.pet.pet_image_url } alt="Pet" class="w-3/5 rounded-lg shadow-2xl"/>
-        <div class="flex justify-between">
+	<div class="hero-content flex-col lg:flex-row mt-40">
+		<img src={data.pet.pet_image_url} alt="Pet" class="w-3/5 rounded-lg shadow-2xl" />
+		<div class="flex justify-between">
 			<div class="max-w w-full">
 				<div class="grid grid-cols-3 gap-10">
 					<div>
@@ -120,6 +154,11 @@
 						<h2 class="text-2xl font mb-5">Post Date</h2>
 						<h2 class="text-1xl font mb-5">{data.pet.creation_date}</h2>
 					</div>
+
+					<div>
+						<h2 class="text-2xl font mb-5">Posted By</h2>
+						<h2 class="text-1xl font mb-5">{data.pet.user.name}</h2>
+					</div>
 				</div>
 
 				<div id="map"></div>
@@ -152,13 +191,27 @@
 							{/each}
 						</div>
 
+						{#if $loggedIn}
+							<form on:submit|preventDefault={() => postComment()}>
+								<input
+									type="text"
+									bind:value={newComment}
+									placeholder="Write a comment..."
+									class="w-full p-2 my-4 border rounded-lg focus:outline-none focus:border-blue-800"
+								/>
+								<button
+									type="submit"
+									class="w-full p-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900"
+									>Post Comment</button
+								>
+							</form>
+						{/if}
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 
 <style>
 	body {
