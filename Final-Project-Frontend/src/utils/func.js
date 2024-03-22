@@ -6,7 +6,7 @@ export const loggedIn = writable(false)
 
 const emptyAuth = {
     "token": "",
-    "userId": ""
+    "userID": ""
 }
 
 export function logOut() {
@@ -18,7 +18,7 @@ export function logOut() {
 export function getUserId() {
     const auth = localStorage.getItem("auth")
     if (auth) {
-        return JSON.parse(auth)["userId"]
+        return JSON.parse(auth)["userID"]
     }
     return null
 

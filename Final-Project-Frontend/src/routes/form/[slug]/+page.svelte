@@ -34,9 +34,9 @@
 	function editPost() {
 		goto(`/form/${data.pet.id}/edit`);
 	}
-	// to check is data and getuserId tally or not
-	// console.log("data:", data);
-	// console.log('user ID:', getUserId());
+	//to check is data and getuserId tally or not
+    console.log("data.pet.userId:",  data.pet.userId);
+    console.log('getUserId():',  getUserId());
 	function deletedPost() {
 		goto('/');
 	}
@@ -127,12 +127,12 @@
 				<!-- to make only user who create the post can see edit button -->
 				<div class="flex justify-between">
 					<div class="max-w w-full mt-4">
-						{#if data.pet.userid == getUserId()}
+						{#if data.pet.userId == getUserId()}
 							<button on:click={editPost} class="btn btn-outline rounded w-full">EDIT</button>
 						{/if}
 						<div class="flex flex-col mt-5">
 							<!-- to make only user who create the post can see delete button -->
-							{#if data.pet.userid == getUserId()}
+							{#if data.pet.userId == getUserId()}
 								<button on:click={deleteUserPetPost} class="btn btn-outline rounded w-full"
 									>DELETE</button
 								>
