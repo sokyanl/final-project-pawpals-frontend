@@ -1,8 +1,7 @@
 <script>
+  import { getUserId } from '../../utils/func'
   export let data;
-
 </script>
-
 
 <!-- User Account Details -->
 <div class="flex flex-row items-start mt-20">
@@ -11,21 +10,20 @@
     <div class="avatar">
       <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 content-center">
         <!-- Generic Profile Picture -->
+        <!-- svelte-ignore a11y-missing-attribute -->
         <img src="UserProfile.png" />
       </div>
     </div>
 
     <!-- Display user name and email -->
-{#if data.user}
-  <div class="label">
-    <h2 class="card-title text-orange-300">{data.user.name}</h2>
-    <p class="mt-2 text-sm">{data.user.email}</p>
-  </div>
-{/if}
-
-
-    <div class="card-actions justify-end">
-    </div>
+    {#each data.pet as pet}
+      <div class="user-details">
+        <p class="mt-2 text-sm font-bold mt-12">Profile Name:</p>
+        <h2 class="card-title text-purple-700">{pet.user.name}</h2>
+        <p class="mt-2 text-sm font-bold mt-5">Profile Email:</p>
+        <h2 class="card-title text-purple-700">{pet.user.email}</h2>
+      </div>
+    {/each}
   </label>
   
   <!-- Divider -->
@@ -35,24 +33,34 @@
   <div class="overflow-x-auto w-full mr-5 basis-3/4" style="padding: 50px">
     <div class="flex flex-wrap justify-center gap-10">
       {#each data.pet as pet}
-      <div class="flex justify-center">
-        <div class="card w-80 bg-base-100 shadow-xl">
-          <figure><img src="{pet.pet_image_url}" alt="PetImage" /></figure>
-          <div class="card-body">
-            <div class="card-actions justify-start">
-              <div class="badge badge-accent">{pet.pet_breed}</div>
-              <div class="badge badge-accent">{pet.pet_type}</div>
-              <div class="badge badge-accent">{pet.pet_color}</div>
-              <div class="badge badge-accent">{pet.pet_gender}</div>
-            </div>
-            <p class="mt-5">{pet.pet_description}</p>
-            <div class="card-actions justify-center mt-5">
-              <a class="btn btn-primary" href="/form/{pet.id}">Learn More</a>
+        <div class="flex justify-center">
+          <div class="card w-80 bg-base-100 shadow-xl">
+            <figure><img src="{pet.pet_image_url}" alt="PetImage" /></figure>
+            <div class="card-body">
+              <div class="card-actions justify-start">
+                <div class="badge badge-accent">{pet.pet_breed}</div>
+                <div class="badge badge-accent">{pet.pet_type}</div>
+                <div class="badge badge-accent">{pet.pet_colour}</div>
+                <div class="badge badge-accent">{pet.pet_gender}</div>
+                <div class="badge badge-accent">{pet.user.name}</div>
+              </div>
+              <p class="mt-5">{pet.pet_description}</p>
+              <div class="card-actions justify-center mt-5">
+                <a class="btn btn-primary" href="/form/{pet.id}">Learn More</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       {/each}
     </div>
   </div>
 </div>
+
+<style>
+  /* Grid layout for user details */
+  .flex.flex-row.items-start .user-details {
+    display: grid;
+    grid-template-columns: auto; /* Adjust as needed */
+    grid-row-gap: 10px; /* Adjust gap between user details */
+  }
+</style>
