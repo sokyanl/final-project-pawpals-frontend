@@ -79,7 +79,7 @@
 						<span class="label-text font-medium text-base mt-3">Pet Type</span>
 					</label>
 					<select
-						class="select select-bordered w-full required"
+						class="select select-bordered w-full "
 						name="type"
 						value={data.pet.pet_type}
 					>
@@ -123,7 +123,7 @@
 						type="text"
 						placeholder="example: Corgi"
 						class="input input-bordered"
-						required
+						
 					/>
 					{#if 'color' in formErrors}
 						<label class="label" for="color">
@@ -136,7 +136,7 @@
 						<span class="label-text font-medium text-base mt-3">Pet Gender</span>
 					</label>
 					<select
-						class="select select-bordered w-full required"
+						class="select select-bordered w-full "
 						name="gender"
 						value={data.pet.pet_gender}
 					>
@@ -180,7 +180,7 @@
 						class="textarea textarea-primary"
 						value={data.pet.pet_description}
 						placeholder="example: Pet name, their behaviour, any unique physical traits like a white spot under their chin, etc..."
-						required
+						
 					></textarea>
 					{#if 'description' in formErrors}
 						<label class="label" for="description">
@@ -198,7 +198,7 @@
 						value={data.pet.pet_location}
 						placeholder="example: Subang, Kota Damansara, Puchong, etc..."
 						class="input input-bordered"
-						required
+						
 					/>
 					{#if 'location' in formErrors}
 						<label class="label" for="location">
@@ -225,7 +225,7 @@
 						<span class="label-text font-medium text-base mt-3">Pet Status</span>
 					</label>
 					<select
-						class="select select-bordered w-full required"
+						class="select select-bordered w-full"
 						name="status"
 						value={data.pet.pet_status}
 					>

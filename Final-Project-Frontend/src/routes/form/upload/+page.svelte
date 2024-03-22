@@ -73,7 +73,7 @@ const accessToken = getTokenFromLocalStorage();
 					<label class="label" for="type">
 						<span class="label-text font-medium text-base mt-3">Pet Type</span>
 					</label>
-					<select class="select select-bordered w-full required" name="type" required>
+					<select class="select select-bordered w-full required" name="type"  >
 						<option disabled selected>Select one</option>
 						<option>Cat</option>
 						<option>Dog</option>
@@ -89,7 +89,7 @@ const accessToken = getTokenFromLocalStorage();
 						placeholder="example: tabby if it's a cat, corgi if it's a dog"
 						class="input input-bordered"
             name="breed"
-            required
+             
 					/>
 					
 
@@ -97,13 +97,13 @@ const accessToken = getTokenFromLocalStorage();
 					<label class="label" for="">
 						<span class="label-text font-medium text-base mt-3">Pet Colour</span>
 					</label>
-					<input name="color" type="text" placeholder="example: black, white, brown" class="input input-bordered" required />
+					<input name="color" type="text" placeholder="example: black, white, brown" class="input input-bordered"   />
 
 					<!-- Pet Gender Section -->
 					<label class="label" for="">
 						<span class="label-text font-medium text-base mt-3">Pet Gender</span>
 					</label>
-					<select class="select select-bordered w-full required" name="gender" required>
+					<select class="select select-bordered w-full required" name="gender"  >
 						<option disabled selected>Select one</option>
 						<option>Female</option>
 						<option>Male</option>
@@ -127,7 +127,7 @@ const accessToken = getTokenFromLocalStorage();
           name="description"
 						class="textarea input-bordered"
 						placeholder="example: Pet name, their behaviour, any unique physical traits like a white spot under their chin, etc..."
-						required
+						 
 					></textarea>
 
 					<!-- Pet Location Section -->
@@ -139,7 +139,7 @@ const accessToken = getTokenFromLocalStorage();
             name="location"
 						placeholder="example: Subang, Kota Damansara, Puchong, etc..."
 						class="input input-bordered"
-						required
+						 
 					/>
 
           <!-- Pet Image Section -->
@@ -150,14 +150,14 @@ const accessToken = getTokenFromLocalStorage();
 						type="file"
 						class="file:btn file:btn-primary"
             name="image"
-            required
+             
 					/>
 
 					<!-- Pet Status Section -->
           <label class="label" for="">
 						<span class="label-text font-medium text-base mt-3">Pet Status</span>
 					</label>
-					<select class="select select-bordered w-full required" name="status" required>
+					<select class="select select-bordered w-full  " name="status"  >
 						<option disabled selected>Select one</option>
 						<option>Lost</option>
 						<option>Found</option>

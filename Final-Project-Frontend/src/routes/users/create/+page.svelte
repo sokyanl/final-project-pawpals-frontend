@@ -70,7 +70,7 @@
 				<label class="label" for="name">
 					<span class="label-text">Name</span>
 				</label>
-				<input type="text" placeholder="name" class="input input-bordered" name="name" required />
+				<input type="text" placeholder="name" class="input input-bordered" name="name" />
 			</div>
 			{#if 'name' in formErrors}
 				<label class="label" for="name">
@@ -88,7 +88,6 @@
 					placeholder="email"
 					class="input input-bordered"
 					name="email"
-					required
 				/>
 			</div>
       {#if 'email' in formErrors}
@@ -107,7 +106,6 @@
 					placeholder="password"
 					class="input input-bordered"
 					name="password"
-					required
 				/>
         {#if 'password' in formErrors}
 				<label class="label" for="password">
@@ -125,7 +123,6 @@
 						placeholder="password"
 						class="input input-bordered"
 						name="password-confirmation"
-						required
 					/>
 				</div>
         {#if 'password-confirmation' in formErrors}
