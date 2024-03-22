@@ -101,30 +101,30 @@
         <img src="Tips1.png" class="w-full" alt="Tailwind CSS Carousel component" />
       </div> 
       <div id="item2" class="carousel-item w-full">
-        <img src="Tips3.png" class="w-full" alt="Tailwind CSS Carousel component" />
+        <img src="Tips2.png" class="w-full" alt="Tailwind CSS Carousel component" />
       </div> 
       <div id="item3" class="carousel-item w-full">
-        <img src="Tips4.png" class="w-full" alt="Tailwind CSS Carousel component" />
+        <img src="Tips3.png" class="w-full" alt="Tailwind CSS Carousel component" />
       </div> 
       <div id="item4" class="carousel-item w-full">
+        <img src="Tips4.png" class="w-full" alt="Tailwind CSS Carousel component" />
+      </div>
+      <div id="item5" class="carousel-item w-full">
         <img src="Tips5.png" class="w-full" alt="Tailwind CSS Carousel component" />
       </div>
-      <div id="item4" class="carousel-item w-full">
+      <div id="item6" class="carousel-item w-full">
         <img src="Tips6.png" class="w-full" alt="Tailwind CSS Carousel component" />
-      </div>
-      <div id="item4" class="carousel-item w-full">
-        <img src="Tips2.png" class="w-full" alt="Tailwind CSS Carousel component" />
       </div>
     </div> 
   </div>
-    <div class="flex justify-center w-full text-primary gap-1"> ❮
-      <a href="#item1" class="btn btn-accent btn-xs">1</a> 
-      <a href="#item2" class="btn btn-accent btn-xs">2</a> 
-      <a href="#item3" class="btn btn-accent btn-xs">3</a> 
-      <a href="#item4" class="btn btn-accent btn-xs">4</a>
-      <a href="#item4" class="btn btn-accent btn-xs">5</a>
-      <a href="#item4" class="btn btn-accent btn-xs">6</a>
-      ❯
+    <div class="flex justify-center w-full text-primary gap-1"> 
+      <a href="#item1" class="btn btn-primary btn-xs">1</a> 
+      <a href="#item2" class="btn btn-primary btn-xs">2</a> 
+      <a href="#item3" class="btn btn-primary btn-xs">3</a> 
+      <a href="#item4" class="btn btn-primary btn-xs">4</a>
+      <a href="#item5" class="btn btn-primary btn-xs">5</a>
+      <a href="#item6" class="btn btn-primary btn-xs">6</a>
+      
     </div>
 
 

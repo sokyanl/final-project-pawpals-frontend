@@ -53,7 +53,7 @@
             <div class="card-actions justify-start">
               <div class="badge badge-accent">{pet.pet_breed}</div>
               <div class="badge badge-accent">{pet.pet_type}</div>
-              <div class="badge badge-accent">{pet.pet_color}</div>
+              <div class="badge badge-accent">{pet.pet_colour}</div>
               <div class="badge badge-accent">{pet.pet_gender}</div>
             </div>
             <p class="mt-5">{pet.pet_description}</p>

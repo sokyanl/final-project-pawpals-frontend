@@ -37,8 +37,8 @@ import { loggedIn, logOut } from '../utils/func'
       <li><a class="text-white" href="/ourMission">Our Mission</a></li>
       <li>
         <details>
-          <summary class="text-white">Find out more</summary>
-          <ul class="p-2">
+          <summary class="text-white dropdown dropdown-end">Find out more</summary>
+          <ul class="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4 p2">
             <li><a href="/lostGallery">Search lost pet</a></li>
             <li><a href="/foundGallery">Browse found pets</a></li>
             <li><a href="/reunitedGallery">Success stories</a></li>
