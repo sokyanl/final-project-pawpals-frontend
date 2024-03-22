@@ -70,7 +70,7 @@ const accessToken = getTokenFromLocalStorage();
 			<form class="card-body" on:submit={uploadImage}>
 				<div class="form-control">
 					<!-- Pet Type Section -->
-					<label class="label">
+					<label class="label" for="type">
 						<span class="label-text font-medium text-base mt-3">Pet Type</span>
 					</label>
 					<select class="select select-bordered w-full required" name="type" required>
@@ -81,7 +81,7 @@ const accessToken = getTokenFromLocalStorage();
 
 
 					<!-- Pet Breed Section -->
-					<label class="label">
+					<label class="label" for="breed">
 						<span class="label-text font-medium text-base mt-3">Pet Breed</span>
 					</label>
 					<input
@@ -94,13 +94,13 @@ const accessToken = getTokenFromLocalStorage();
 					
 
 					<!-- Pet Colour Section -->
-					<label class="label">
+					<label class="label" for="">
 						<span class="label-text font-medium text-base mt-3">Pet Colour</span>
 					</label>
 					<input name="color" type="text" placeholder="example: black, white, brown" class="input input-bordered" required />
 
 					<!-- Pet Gender Section -->
-					<label class="label">
+					<label class="label" for="">
 						<span class="label-text font-medium text-base mt-3">Pet Gender</span>
 					</label>
 					<select class="select select-bordered w-full required" name="gender" required>
@@ -111,7 +111,7 @@ const accessToken = getTokenFromLocalStorage();
 					</select>
 
 					<!-- Pet Age Section -->
-					<label class="label">
+					<label class="label" for="">
 						<span class="label-text font-medium text-base mt-3">Pet Age</span>
 					</label>
 					<input name="age" type="text" placeholder="example: 1 years old" class="input input-bordered" />
@@ -120,7 +120,7 @@ const accessToken = getTokenFromLocalStorage();
 					>
 
 					<!-- Pet Description Section -->
-					<label class="label">
+					<label class="label" for="">
 						<span class="label-text font-medium text-base mt-3">Pet Description</span>
 					</label>
 					<textarea
@@ -131,7 +131,7 @@ const accessToken = getTokenFromLocalStorage();
 					></textarea>
 
 					<!-- Pet Location Section -->
-					<label class="label">
+					<label class="label" for="">
 						<span class="label-text font-medium text-base mt-3">Last Seen Location</span>
 					</label>
 					<input
@@ -143,7 +143,7 @@ const accessToken = getTokenFromLocalStorage();
 					/>
 
           <!-- Pet Image Section -->
-					<label class="label">
+					<label class="label" for="">
 						<span class="label-text font-medium text-base mt-3">Pet Image</span>
 					</label>
 					<input
@@ -154,7 +154,7 @@ const accessToken = getTokenFromLocalStorage();
 					/>
 
 					<!-- Pet Status Section -->
-          <label class="label">
+          <label class="label" for="">
 						<span class="label-text font-medium text-base mt-3">Pet Status</span>
 					</label>
 					<select class="select select-bordered w-full required" name="status" required>

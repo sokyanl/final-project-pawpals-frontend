@@ -3,8 +3,8 @@
 	import { goto } from '$app/navigation';
 	import { uploadMedia } from '../../../../utils/s3-uploader.js';
 	import { getTokenFromLocalStorage } from '../../../../utils/func';
-  	
-	export let data
+
+	export let data;
 
 	let formErrors = {};
 	let fileName, fileUrl;
@@ -13,12 +13,8 @@
 		evt.preventDefault();
 		const newImage = evt.target['image'].files[0];
 
-        if (newImage != null) {
-        	[fileName, fileUrl] = await uploadMedia(evt.target['image'].files[0]);
-        } else {
-            fileUrl = data.pet.pet_image_url;
-        }
-		
+		[fileName, fileUrl] = await uploadMedia(evt.target['image'].files[0]);
+
 		const accessToken = getTokenFromLocalStorage();
 
 		const userData = {
@@ -34,8 +30,6 @@
 		};
 
 		console.log(userData);
-
-
 
 		const resp = await fetch(PUBLIC_BACKEND_BASE_URL + `/pet/${data.pet.id}`, {
 			method: 'PUT',
@@ -56,12 +50,12 @@
 			const res = await resp.json();
 			console.log(res);
 			formErrors = res.data;
-		} 
+		}
 	}
 </script>
 
 <svelte:head>
-  <script src="/aws-sdk-s3.min.js"></script>
+	<script src="/aws-sdk-s3.min.js"></script>
 </svelte:head>
 
 <div
@@ -81,105 +75,170 @@
 			<form class="card-body" on:submit={uploadImage}>
 				<div class="form-control">
 					<!-- Pet Type Section -->
-					<label class="label">
+					<label class="label" for="type">
 						<span class="label-text font-medium text-base mt-3">Pet Type</span>
 					</label>
-					<select class="select select-bordered w-full required" name="type" value="{data.pet.pet_type}">
+					<select
+						class="select select-bordered w-full required"
+						name="type"
+						value={data.pet.pet_type}
+					>
 						<option disabled selected>Select one</option>
 						<option>Cat</option>
 						<option>Dog</option>
 					</select>
-
+					{#if 'type' in formErrors}
+						<label class="label" for="type">
+							<span class="label-text-alt text-red-500">{formErrors['type'].message}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Breed Section -->
-					<label class="label">
+					<label class="label" for="breed">
 						<span class="label-text font-medium text-base mt-3">Pet Breed</span>
 					</label>
 					<input
 						type="text"
 						placeholder="example: tabby if it's a cat, corgi if it's a dog"
 						class="input input-bordered"
-            name="breed"
-            value="{data.pet.pet_breed}"
+						name="breed"
+						value={data.pet.pet_breed}
 					/>
 					<span class="label-text-secondary text-sm text-purple-400 mt-2 mb-2"
 						>Leave blank if unknown</span
 					>
+					{#if 'breed' in formErrors}
+						<label class="label" for="breed">
+							<span class="label-text-alt text-red-500">{formErrors['breed'].message}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Colour Section -->
-					<label class="label">
+					<label class="label" for="color">
 						<span class="label-text font-medium text-base mt-3">Pet Colour</span>
 					</label>
-					<input name="color" value="{data.pet.pet_colour}" type="text" placeholder="example: Corgi" class="input input-bordered" required />
+					<input
+						name="color"
+						value={data.pet.pet_colour}
+						type="text"
+						placeholder="example: Corgi"
+						class="input input-bordered"
+						required
+					/>
+					{#if 'color' in formErrors}
+						<label class="label" for="color">
+							<span class="label-text-alt text-red-500">{formErrors['color'].message}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Gender Section -->
-					<label class="label">
+					<label class="label" for="gender">
 						<span class="label-text font-medium text-base mt-3">Pet Gender</span>
 					</label>
-					<select class="select select-bordered w-full required" name="gender" value="{data.pet.pet_gender}">
+					<select
+						class="select select-bordered w-full required"
+						name="gender"
+						value={data.pet.pet_gender}
+					>
 						<option disabled selected>Select one</option>
 						<option>Female</option>
 						<option>Male</option>
 						<option>I'm not sure...</option>
 					</select>
+					{#if 'gender' in formErrors}
+						<label class="label" for="gender">
+							<span class="label-text-alt text-red-500">{formErrors['gender'].message}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Age Section -->
-					<label class="label">
+					<label class="label" for="age">
 						<span class="label-text font-medium text-base mt-3">Pet Age</span>
 					</label>
-					<input name="age" value="{data.pet.pet_age}" type="text" placeholder="example: 1 years old" class="input input-bordered" />
+					<input
+						name="age"
+						value={data.pet.pet_age}
+						type="text"
+						placeholder="example: 1 years old"
+						class="input input-bordered"
+					/>
 					<span class="label-text-secondary text-sm text-purple-400 mt-2 mb-2"
 						>Leave blank if unknown</span
 					>
+					{#if 'age' in formErrors}
+						<label class="label" for="age">
+							<span class="label-text-alt text-red-500">{formErrors['age'].message}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Description Section -->
-					<label class="label">
+					<label class="label" for="description">
 						<span class="label-text font-medium text-base mt-3">Pet Description</span>
 					</label>
 					<textarea
-          name="description"
+						name="description"
 						class="textarea textarea-primary"
-            value="{data.pet.pet_description}"
+						value={data.pet.pet_description}
 						placeholder="example: Pet name, their behaviour, any unique physical traits like a white spot under their chin, etc..."
 						required
 					></textarea>
+					{#if 'description' in formErrors}
+						<label class="label" for="description">
+							<span class="label-text-alt text-red-500">{formErrors['description'].message}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Location Section -->
-					<label class="label">
+					<label class="label" for="location">
 						<span class="label-text font-medium text-base mt-3">Last Seen Location</span>
 					</label>
 					<input
 						type="text"
-            name="location"
-            value="{data.pet.pet_location}"
+						name="location"
+						value={data.pet.pet_location}
 						placeholder="example: Subang, Kota Damansara, Puchong, etc..."
 						class="input input-bordered"
 						required
 					/>
+					{#if 'location' in formErrors}
+						<label class="label" for="location">
+							<span class="label-text-alt text-red-500">{formErrors['location'].message}</span>
+						</label>
+					{/if}
 
-          <!-- Pet Image Section -->
-					<label class="label">
+					<!-- Pet Image Section -->
+					<label class="label" for="image">
 						<span class="label-text font-medium text-base mt-3">Pet Image</span>
 					</label>
-					<input
-						type="file"
-						class="file:btn file:btn-primary"
-            name="image"
-					/>
+					<input type="file" class="file:btn file:btn-primary" name="image" />
 					<span class="label-text-secondary text-sm text-purple-400 mt-2 mb-2"
-						>Leave blank if none</span
+						>Sorry, you will need to reenter your image</span
 					>
+					{#if 'image' in formErrors}
+						<label class="label" for="image">
+							<span class="label-text-alt text-red-500">{formErrors['image'].message}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Status Section -->
-          <label class="label">
+					<label class="label" for="status">
 						<span class="label-text font-medium text-base mt-3">Pet Status</span>
 					</label>
-					<select class="select select-bordered w-full required" name="status" value="{data.pet.pet_status}">
+					<select
+						class="select select-bordered w-full required"
+						name="status"
+						value={data.pet.pet_status}
+					>
 						<option disabled selected>Select one</option>
 						<option>Lost</option>
 						<option>Found</option>
-            <option>Reunited</option>
+						<option>Reunited</option>
 					</select>
+					{#if 'status' in formErrors}
+						<label class="label" for="status">
+							<span class="label-text-alt text-red-500">{formErrors['status'].message}</span>
+						</label>
+					{/if}
 
 					<div class="form-control mt-6">
 						<button class="btn btn-primary">Submit</button>

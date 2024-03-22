@@ -71,9 +71,9 @@
 </svelte:head>
 
 <div class="hero min-h-screen bg-base-300">
-	<div class="hero-content flex-col lg:flex-row mt-40">
-		<img src={data.pet.pet_image_url} alt="Image" class="w-3/5 rounded-lg shadow-2xl" />
-		<div class="flex justify-between">
+    <div class="hero-content flex-col lg:flex-row mt-40">
+        <img src={data.pet.pet_image_url } alt="Pet" class="w-3/5 rounded-lg shadow-2xl"/>
+        <div class="flex justify-between">
 			<div class="max-w w-full">
 				<div class="grid grid-cols-3 gap-10">
 					<div>

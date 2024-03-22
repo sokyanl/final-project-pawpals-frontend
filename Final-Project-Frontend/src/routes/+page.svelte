@@ -17,7 +17,7 @@
         <a href="/lostGallery" class="relative group">
           <div class="avatar">
             <div class="w-64 rounded-full overflow-hidden">
-              <img src="Lost&Found-1.png" class="transition-opacity duration-200 group-hover:opacity-20" />
+              <img src="Lost&Found-1.png" class="transition-opacity duration-200 group-hover:opacity-20" alt="lost portal"/>
             </div>
           </div>
           <div class="absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
@@ -29,7 +29,7 @@
         <a href="/foundGallery" class="relative group">
           <div class="avatar">
             <div class="w-64 rounded-full overflow-hidden">
-              <img src="Lost&Found-2.png" class="transition-opacity duration-200 group-hover:opacity-20" />
+              <img src="Lost&Found-2.png" class="transition-opacity duration-200 group-hover:opacity-20" alt="found portal"/>
             </div>
           </div>
           <div class="absolute inset-0 flex justify-center items-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
