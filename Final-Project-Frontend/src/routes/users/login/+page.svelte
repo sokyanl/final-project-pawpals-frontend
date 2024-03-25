@@ -22,7 +22,7 @@
     const resp = await authLogin(userData.email, userData.password);
     if (resp.success) {
       postLoggedIn();
-      $loggedIn.set(true)
+      loggedIn.set(true)
     } else {
       formErrors = resp.res.error;
       clicked = false;

@@ -32,6 +32,7 @@
 		"@maptiler/client": "^1.8.1",
 		"@maptiler/sdk": "^1.2.1",
 		"humanize-plus": "^1.8.2",
-		"svelte-markdown": "^0.4.1"
+		"svelte-markdown": "^0.4.1",
+		"svelte-routing": "^2.12.0"
 	}
 }

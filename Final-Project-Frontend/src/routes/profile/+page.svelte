@@ -1,5 +1,4 @@
 <script>
-  import { getUserId } from '../../utils/func'
   export let data;
 </script>
 
@@ -16,44 +15,46 @@
     </div>
 
     <!-- Display user name and email -->
-    {#each data.pet as pet}
-      <div class="user-details">
-        <p class="mt-2 text-sm font-bold mt-12">Profile Name:</p>
-        <h2 class="card-title text-purple-700">{pet.user.name}</h2>
-        <p class="mt-2 text-sm font-bold mt-5">Profile Email:</p>
-        <h2 class="card-title text-purple-700">{pet.user.email}</h2>
-      </div>
-    {/each}
+    <div class="user-details">
+      <p class="mt-2 text-sm font-bold mt-12">Profile Name:</p>
+      <h2 class="card-title text-purple-700">{data.pet[0].user.name}</h2>
+      <p class="mt-2 text-sm font-bold mt-5">Profile Email:</p>
+      <h2 class="card-title text-purple-700">{data.pet[0].user.email}</h2>
+    </div>
   </label>
   
   <!-- Divider -->
   <div class="divider divider-horizontal"></div>
 
-  <!-- Cards -->
-  <div class="overflow-x-auto w-full mr-5 basis-3/4" style="padding: 50px">
-    <div class="flex flex-wrap justify-center gap-10">
-      {#each data.pet as pet}
-        <div class="flex justify-center">
-          <div class="card w-80 bg-base-100 shadow-xl">
-            <figure><img src="{pet.pet_image_url}" alt="PetImage" /></figure>
+ <!-- Cards -->
+<div class="overflow-x-auto w-full mr-5 basis-3/4" style="padding: 50px">
+  <div class="flex flex-wrap justify-center gap-10">
+    {#each data.pet as pet}
+      <div class="flex justify-center">
+        <div class="card w-80 bg-base-100 shadow-2xl">
+          <!-- Wrap the entire card body with an anchor tag -->
+          <a href="/form/{pet.id}">
+            <figure><img src="{pet.pet_image_url}" alt="PetImage" style="height: 350px; width: 400px;" /></figure>
             <div class="card-body">
-              <div class="card-actions justify-start">
+              <div class="badge badge-primary text-base p-3"> Current Pet Status: <strong><span style="margin-left: 8px;">{pet.pet_status}</span></strong> 
+              </div>              
+              <div class="card-actions justify-start mt-1">
                 <div class="badge badge-accent">{pet.pet_breed}</div>
                 <div class="badge badge-accent">{pet.pet_type}</div>
                 <div class="badge badge-accent">{pet.pet_colour}</div>
                 <div class="badge badge-accent">{pet.pet_gender}</div>
-                <div class="badge badge-accent">{pet.user.name}</div>
               </div>
               <p class="mt-5">{pet.pet_description}</p>
               <div class="card-actions justify-center mt-5">
                 <a class="btn btn-primary" href="/form/{pet.id}">Learn More</a>
               </div>
             </div>
-          </div>
+          </a>
         </div>
-      {/each}
-    </div>
+      </div>
+    {/each}
   </div>
+</div>
 </div>
 
 <style>
