@@ -37,8 +37,8 @@
         <div class="card-body">
           <div class="badge badge-primary text-base p-3"> Current Pet Status: <strong><span style="margin-left: 8px;">{pet.pet_status}</span></strong></div>      
           <div class="card-actions justify-start">
+            <div class="badge badge-success text-white">{pet.pet_type}</div>
             <div class="badge badge-accent">{pet.pet_breed}</div>
-            <div class="badge badge-accent">{pet.pet_type}</div>
             <div class="badge badge-accent">{pet.pet_colour}</div>
             <div class="badge badge-accent">{pet.pet_gender}</div>
           </div>
