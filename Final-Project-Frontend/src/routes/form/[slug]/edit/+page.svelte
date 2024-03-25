@@ -8,9 +8,11 @@
 
 	let formErrors = {};
 	let fileName, fileUrl;
+	let clicked = false;
 
 	async function uploadImage(evt) {
 		evt.preventDefault();
+		clicked = true;
 		const newImage = evt.target['image'].files[0];
 
 		[fileName, fileUrl] = await uploadMedia(evt.target['image'].files[0]);
@@ -50,6 +52,7 @@
 			// const res = await resp.json();
 			console.log(res);
 			formErrors = res.error;
+			clicked = false;
 		}
 	}
 </script>
@@ -211,7 +214,14 @@
 					{/if}
 
 					<div class="form-control mt-6">
-						<button class="btn btn-primary">Submit</button>
+						{#if clicked}
+							<button class="btn btn-active btn-primary">
+								<span class="loading loading-spinner hover:btn-accent"></span>
+								Submit
+							</button>
+						{:else}
+							<button class="btn btn-primary hover:btn-accent">Submit</button>
+						{/if}
 					</div>
 				</div>
 			</form>

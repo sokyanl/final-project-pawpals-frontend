@@ -132,70 +132,12 @@
 			console.error('Failed to delete comment');
 		}
 	}
-
-	let newComment = '';
-
-	async function postComment() {
-		const getToken = getTokenFromLocalStorage();
-
-		const resp = await fetch(PUBLIC_BACKEND_BASE_URL + `/comment/${data.pet.id}`, {
-			method: 'POST',
-			mode: 'cors',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${getToken}`
-			},
-			body: JSON.stringify({ content: newComment })
-		});
-
-		if (resp.status == 200) {
-			// Fetch the updated list of comments for the pet
-			const updatedCommentsResponse = await fetch(
-				PUBLIC_BACKEND_BASE_URL + `/comment/${data.pet.id}`
-			);
-			const updatedComments = await updatedCommentsResponse.json();
-
-			// Update the local state with the new comments
-			data.pet.Comment = updatedComments;
-
-			// Clear the comment input field
-			newComment = '';
-		} else {
-			const res = await resp.json();
-			console.log(res.error);
-		}
-	}
-
-	async function deleteComment(petId, commentId) {
-		const getToken = getTokenFromLocalStorage();
-
-		const resp = await fetch(
-			PUBLIC_BACKEND_BASE_URL + `/pet/${petId}/comment?commentId=${commentId}`,
-			{
-				method: 'DELETE',
-				mode: 'cors',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `Bearer ${getToken}`
-				}
-			}
-		);
-
-		if (resp.status == 200) {
-			// Remove the comment from the UI
-			// Assuming commentId is the ID of the comment I just deleted
-			data.pet.Comment = data.pet.Comment.filter((comment) => comment.id !== commentId);
-		} else {
-			console.error('Failed to delete comment');
-		}
-	}
 </script>
 
 <svelte:head>
 	<script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.umd.js"></script>
 	<link href="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.css" rel="stylesheet" />
 </svelte:head>
-
 
 <div
 	class="hero min-h-screen bg-base-200"
@@ -271,142 +213,6 @@
 					{:else}
 						<p>No comments yet.</p>
 					{/if}
-=======
-<div class="hero min-h-screen bg-base-300">
-	<div class="hero-content flex-col lg:flex-row mt-40">
-		<img src={data.pet.pet_image_url} alt="Pet" class="w-3/5 rounded-lg shadow-2xl" />
-		<div class="flex justify-between">
-			<div class="max-w w-full">
-				<div class="grid grid-cols-3 gap-10">
-					<div>
-						<h1 class="text-2xl font mb-2">Pet Type</h1>
-						<h2 class="text-1xl font mb-2">{data.pet.pet_type}</h2>
-					</div>
-
-					<div>
-						<h1 class="text-2xl font mb-2">Pet Breed</h1>
-						<h2 class="text-1xl font mb-2">{data.pet.pet_breed}</h2>
-					</div>
-
-					<div>
-						<h1 class="text-2xl font mb-2">Pet Colour</h1>
-						<h2 class="text-1xl font mb-2">{data.pet.pet_colour}</h2>
-					</div>
-
-					<div>
-						<h1 class="text-2xl font mb-2">Pet Gender</h1>
-						<h2 class="text-1xl font mb-2">{data.pet.pet_gender}</h2>
-					</div>
-
-					<div>
-						<h1 class="text-2xl font mb-2">Pet Age</h1>
-						<h2 class="text-1xl font mb-2">{data.pet.pet_age}</h2>
-					</div>
-
-					<div>
-						<h1 class="text-2xl font mb-2">Location</h1>
-						<h2 class="text-1xl font mb-2">{data.pet.pet_location}</h2>
-					</div>
-
-					<div>
-						<h1 class="text-2xl font mb-5">Status</h1>
-						<h2 class="text-1xl font mb-5">{data.pet.pet_status}</h2>
-					</div>
-
-					<div>
-						<h2 class="text-2xl font mb-5">Pet Description</h2>
-						<SvelteMarkdown source={data.pet.pet_description} />
-					</div>
-
-					<div>
-						<h2 class="text-2xl font mb-5">Post Date</h2>
-						<h2 class="text-1xl font mb-5">{data.pet.creation_date}</h2>
-					</div>
-
-					<div>
-						<h2 class="text-2xl font mb-5">Posted By</h2>
-						<h2 class="text-1xl font mb-5">{data.pet.user.name}</h2>
-					</div>
-				</div>
-
-				<div id="map"></div>
-
-				<!-- to make only user who create the post can see edit button -->
-				<div class="flex justify-between">
-					<div class="max-w w-full mt-4">
-						{#if data.pet.userId == getUserId()}
-							<button on:click={editPost} class="btn btn-outline rounded w-full">EDIT</button>
-						{/if}
-						<div class="flex flex-col mt-5">
-							<!-- to make only user who create the post can see delete button -->
-							{#if data.pet.userId == getUserId()}
-								<button on:click={deleteUserPetPost} class="btn btn-outline rounded w-full"
-									>DELETE</button
-								>
-							{/if}
-						</div>
-
-						<div class="flex flex-col justify-start mt-5">
-							{#if data.pet.Comment.length > 0}
-								<h2 class="text-2xl font mb-3">Comments</h2>
-								{#each data.pet.Comment as comment}
-									<div class="chat chat-start relative">
-										<!-- Make the chat container relative -->
-										<div class="chat-header">
-											{comment.user.name}
-											<time class="text-xs opacity-50 pl-2">{comment.createdAt}</time>
-										</div>
-										<div class="chat-bubble flex items-center justify-between">
-											<!-- Adjusted to justify-between -->
-											{comment.content}
-											{#if comment.userId == getUserId()}
-												<button
-													class="btn btn-xs mt-0.5 ml-3"
-													on:click={() => deleteComment(data.pet.id, comment.id)}
-												>
-													<!-- Position the button absolutely -->
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														width="16"
-														height="16"
-														fill="currentColor"
-														class="bi bi-trash"
-														viewBox="0 0 16 16"
-													>
-														<path
-															d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"
-														/>
-														<path
-															d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"
-														/>
-													</svg>
-												</button>
-											{/if}
-										</div>
-									</div>
-								{/each}
-							{:else}
-								<h2 class="text-2xl font mb-3">Comments</h2>
-								<p>No comments yet.</p>
-							{/if}
-						</div>
-
-						{#if $loggedIn}
-							<form on:submit|preventDefault={() => postComment()}>
-								<input
-									type="text"
-									bind:value={newComment}
-									placeholder="Write a comment..."
-									class="w-full p-2 my-4 border rounded-lg focus:outline-none focus:border-blue-800"
-								/>
-								<button
-									type="submit"
-									class="w-full p-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900"
-									>Post Comment</button
-								>
-							</form>
-						{/if}
-					</div>
 				</div>
 				
 
@@ -448,11 +254,8 @@
 
 
 
+
 <style>
-	body {
-		margin: 0;
-		padding: 0;
-	}
 
 	#map {
 		position: relative;

@@ -56,7 +56,7 @@
               <div class="badge badge-accent">{pet.pet_colour}</div>
               <div class="badge badge-accent">{pet.pet_gender}</div>
             </div>
-            <p class="mt-5">{pet.pet_description}</p>
+            <p class="mt-5">{pet.pet_description.slice(0,35)}</p>
             <div class="card-actions justify-center mt-5">
               <a class="btn btn-primary" href="/form/{pet.id}">Learn More</a>
             </div>
