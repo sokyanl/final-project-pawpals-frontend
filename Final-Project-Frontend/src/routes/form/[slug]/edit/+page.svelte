@@ -44,12 +44,12 @@
 		const res = await resp.json();
 		// console.log(res);
 
-		if (resp.ok) {
+		if (resp.status === 200) {
 			goto(`/form/${data.pet.id}`);
-		} else {
-			const res = await resp.json();
+		}  else if (resp.status === 400) {
+			// const res = await resp.json();
 			console.log(res);
-			formErrors = res.data;
+			formErrors = res.error;
 		}
 	}
 </script>
@@ -87,11 +87,11 @@
 						<option>Cat</option>
 						<option>Dog</option>
 					</select>
-					{#if 'type' in formErrors}
-						<label class="label" for="type">
-							<span class="label-text-alt text-red-500">{formErrors['type'].message}</span>
-						</label>
-					{/if}
+					{#if 'pet_type' in formErrors}
+            <label class="label" for="type">
+                <span class="label-text-alt text-red-500">{formErrors.pet_type}</span>
+            </label>
+        {/if}
 
 					<!-- Pet Breed Section -->
 					<label class="label" for="breed">
@@ -107,11 +107,11 @@
 					<span class="label-text-secondary text-sm text-purple-400 mt-2 mb-2"
 						>Leave blank if unknown</span
 					>
-					{#if 'breed' in formErrors}
-						<label class="label" for="breed">
-							<span class="label-text-alt text-red-500">{formErrors['breed'].message}</span>
-						</label>
-					{/if}
+					{#if 'pet_breed' in formErrors}
+            <label class="label" for="breed">
+                <span class="label-text-alt text-red-500">{formErrors.pet_breed}</span>
+            </label>
+        {/if}
 
 					<!-- Pet Colour Section -->
 					<label class="label" for="color">
@@ -125,11 +125,11 @@
 						class="input input-bordered"
 						
 					/>
-					{#if 'color' in formErrors}
-						<label class="label" for="color">
-							<span class="label-text-alt text-red-500">{formErrors['color'].message}</span>
-						</label>
-					{/if}
+					{#if 'pet_colour' in formErrors}
+            <label class="label" for="color">
+                <span class="label-text-alt text-red-500">{formErrors.pet_colour}</span>
+            </label>
+        {/if}
 
 					<!-- Pet Gender Section -->
 					<label class="label" for="gender">
@@ -145,11 +145,11 @@
 						<option>Male</option>
 						<option>I'm not sure...</option>
 					</select>
-					{#if 'gender' in formErrors}
-						<label class="label" for="gender">
-							<span class="label-text-alt text-red-500">{formErrors['gender'].message}</span>
-						</label>
-					{/if}
+					{#if 'pet_gender' in formErrors}
+            <label class="label" for="gender">
+                <span class="label-text-alt text-red-500">{formErrors.pet_gender}</span>
+            </label>
+        {/if}
 
 					<!-- Pet Age Section -->
 					<label class="label" for="age">
@@ -165,11 +165,6 @@
 					<span class="label-text-secondary text-sm text-purple-400 mt-2 mb-2"
 						>Leave blank if unknown</span
 					>
-					{#if 'age' in formErrors}
-						<label class="label" for="age">
-							<span class="label-text-alt text-red-500">{formErrors['age'].message}</span>
-						</label>
-					{/if}
 
 					<!-- Pet Description Section -->
 					<label class="label" for="description">
@@ -182,11 +177,11 @@
 						placeholder="example: Pet name, their behaviour, any unique physical traits like a white spot under their chin, etc..."
 						
 					></textarea>
-					{#if 'description' in formErrors}
-						<label class="label" for="description">
-							<span class="label-text-alt text-red-500">{formErrors['description'].message}</span>
-						</label>
-					{/if}
+					{#if 'pet_description' in formErrors}
+            <label class="label" for="description">
+                <span class="label-text-alt text-red-500">{formErrors.pet_description}</span>
+            </label>
+        {/if}
 
 					<!-- Pet Location Section -->
 					<label class="label" for="location">
@@ -200,25 +195,18 @@
 						class="input input-bordered"
 						
 					/>
-					{#if 'location' in formErrors}
-						<label class="label" for="location">
-							<span class="label-text-alt text-red-500">{formErrors['location'].message}</span>
-						</label>
-					{/if}
+					{#if 'pet_location' in formErrors}
+            <label class="label" for="location">
+                <span class="label-text-alt text-red-500">{formErrors.pet_location}</span>
+            </label>
+        {/if}
 
 					<!-- Pet Image Section -->
 					<label class="label" for="image">
 						<span class="label-text font-medium text-base mt-3">Pet Image</span>
 					</label>
 					<input type="file" class="file:btn file:btn-primary" name="image" />
-					<span class="label-text-secondary text-sm text-purple-400 mt-2 mb-2"
-						>Sorry, you will need to reenter your image</span
-					>
-					{#if 'image' in formErrors}
-						<label class="label" for="image">
-							<span class="label-text-alt text-red-500">{formErrors['image'].message}</span>
-						</label>
-					{/if}
+					
 
 					<!-- Pet Status Section -->
 					<label class="label" for="status">
@@ -234,11 +222,11 @@
 						<option>Found</option>
 						<option>Reunited</option>
 					</select>
-					{#if 'status' in formErrors}
-						<label class="label" for="status">
-							<span class="label-text-alt text-red-500">{formErrors['status'].message}</span>
-						</label>
-					{/if}
+					{#if 'pet_status' in formErrors}
+            <label class="label" for="location">
+                <span class="label-text-alt text-red-500">{formErrors.pet_status}</span>
+            </label>
+        {/if}
 
 					<div class="form-control mt-6">
 						<button class="btn btn-primary">Submit</button>
