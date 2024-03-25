@@ -46,7 +46,7 @@
 
 		if (resp.status === 200) {
 			goto(`/form/${data.pet.id}`);
-		}  else if (resp.status === 400) {
+		} else if (resp.status === 400) {
 			// const res = await resp.json();
 			console.log(res);
 			formErrors = res.error;
@@ -78,20 +78,16 @@
 					<label class="label" for="type">
 						<span class="label-text font-medium text-base mt-3">Pet Type</span>
 					</label>
-					<select
-						class="select select-bordered w-full "
-						name="type"
-						value={data.pet.pet_type}
-					>
+					<select class="select select-bordered w-full" name="type" value={data.pet.pet_type}>
 						<option disabled selected>Select one</option>
 						<option>Cat</option>
 						<option>Dog</option>
 					</select>
 					{#if 'pet_type' in formErrors}
-            <label class="label" for="type">
-                <span class="label-text-alt text-red-500">{formErrors.pet_type}</span>
-            </label>
-        {/if}
+						<label class="label" for="type">
+							<span class="label-text-alt text-red-500">{formErrors.pet_type}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Breed Section -->
 					<label class="label" for="breed">
@@ -104,14 +100,12 @@
 						name="breed"
 						value={data.pet.pet_breed}
 					/>
-					<span class="label-text-secondary text-sm text-purple-400 mt-2 mb-2"
-						>Leave blank if unknown</span
-					>
+
 					{#if 'pet_breed' in formErrors}
-            <label class="label" for="breed">
-                <span class="label-text-alt text-red-500">{formErrors.pet_breed}</span>
-            </label>
-        {/if}
+						<label class="label" for="breed">
+							<span class="label-text-alt text-red-500">{formErrors.pet_breed}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Colour Section -->
 					<label class="label" for="color">
@@ -123,33 +117,28 @@
 						type="text"
 						placeholder="example: Corgi"
 						class="input input-bordered"
-						
 					/>
 					{#if 'pet_colour' in formErrors}
-            <label class="label" for="color">
-                <span class="label-text-alt text-red-500">{formErrors.pet_colour}</span>
-            </label>
-        {/if}
+						<label class="label" for="color">
+							<span class="label-text-alt text-red-500">{formErrors.pet_colour}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Gender Section -->
 					<label class="label" for="gender">
 						<span class="label-text font-medium text-base mt-3">Pet Gender</span>
 					</label>
-					<select
-						class="select select-bordered w-full "
-						name="gender"
-						value={data.pet.pet_gender}
-					>
+					<select class="select select-bordered w-full" name="gender" value={data.pet.pet_gender}>
 						<option disabled selected>Select one</option>
 						<option>Female</option>
 						<option>Male</option>
 						<option>I'm not sure...</option>
 					</select>
 					{#if 'pet_gender' in formErrors}
-            <label class="label" for="gender">
-                <span class="label-text-alt text-red-500">{formErrors.pet_gender}</span>
-            </label>
-        {/if}
+						<label class="label" for="gender">
+							<span class="label-text-alt text-red-500">{formErrors.pet_gender}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Age Section -->
 					<label class="label" for="age">
@@ -175,13 +164,12 @@
 						class="textarea textarea-primary"
 						value={data.pet.pet_description}
 						placeholder="example: Pet name, their behaviour, any unique physical traits like a white spot under their chin, etc..."
-						
 					></textarea>
 					{#if 'pet_description' in formErrors}
-            <label class="label" for="description">
-                <span class="label-text-alt text-red-500">{formErrors.pet_description}</span>
-            </label>
-        {/if}
+						<label class="label" for="description">
+							<span class="label-text-alt text-red-500">{formErrors.pet_description}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Location Section -->
 					<label class="label" for="location">
@@ -193,40 +181,34 @@
 						value={data.pet.pet_location}
 						placeholder="example: Subang, Kota Damansara, Puchong, etc..."
 						class="input input-bordered"
-						
 					/>
 					{#if 'pet_location' in formErrors}
-            <label class="label" for="location">
-                <span class="label-text-alt text-red-500">{formErrors.pet_location}</span>
-            </label>
-        {/if}
+						<label class="label" for="location">
+							<span class="label-text-alt text-red-500">{formErrors.pet_location}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Image Section -->
 					<label class="label" for="image">
 						<span class="label-text font-medium text-base mt-3">Pet Image</span>
 					</label>
 					<input type="file" class="file:btn file:btn-primary" name="image" />
-					
 
 					<!-- Pet Status Section -->
 					<label class="label" for="status">
 						<span class="label-text font-medium text-base mt-3">Pet Status</span>
 					</label>
-					<select
-						class="select select-bordered w-full"
-						name="status"
-						value={data.pet.pet_status}
-					>
+					<select class="select select-bordered w-full" name="status" value={data.pet.pet_status}>
 						<option disabled selected>Select one</option>
 						<option>Lost</option>
 						<option>Found</option>
 						<option>Reunited</option>
 					</select>
 					{#if 'pet_status' in formErrors}
-            <label class="label" for="location">
-                <span class="label-text-alt text-red-500">{formErrors.pet_status}</span>
-            </label>
-        {/if}
+						<label class="label" for="location">
+							<span class="label-text-alt text-red-500">{formErrors.pet_status}</span>
+						</label>
+					{/if}
 
 					<div class="form-control mt-6">
 						<button class="btn btn-primary">Submit</button>
