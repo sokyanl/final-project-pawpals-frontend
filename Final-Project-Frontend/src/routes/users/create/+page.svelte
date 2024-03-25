@@ -1,24 +1,25 @@
 <script>
 	import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
-  import { loggedIn } from '../../../utils/func';
+  import { loggedIn, authLogin } from '../../../utils/func';
 	import { goto } from '$app/navigation';
 
-  async function login(evt) {
-    evt.preventDefault();
-    clicked = true;
+  let formErrors = {};
+  let clicked 
+
+  async function login(email, password) {
 
     const userData = {
-      email: evt.target['email'].value,
-      password: evt.target['password'].value
+      email: email,
+      password: password
     };
     console.log(userData); //Prints in console if login is successful
     // If not logged in, perform login operation
     const resp = await authLogin(userData.email, userData.password);
     if (resp.success) {
-      $loggedIn.set(true)
+      loggedIn.set(true)
+      goto('/form/upload')
     } else {
       formErrors = resp.res.error;
-      clicked = false;
     }
   }
 
@@ -26,9 +27,9 @@
 		evt.preventDefault();
 
 		if (evt.target['password'].value != evt.target['password-confirmation'].value) {
-			formErrors['password'] = { message: 'Password confirmation does not match' };
+			formErrors['password'] =  'Password confirmation does not match' ;
 			clicked = false;
-			console.log(clicked);
+			//console.log(clicked);
 			return;
 		}
 
@@ -47,18 +48,19 @@
 			body: JSON.stringify(userData)
 		});
 
+		const res = await resp.json();
+
 		if (resp.status === 200) {
-			login(userData.email, userData.password)
+			const resp2 = login(userData.email, userData.password)
 		} else if (resp.status === 400) {
-			const res = await resp.json();
-			formErrors = res.data;
+			formErrors = res.error;
 		} else {
 		}
 		console.log(resp.status);
+    console.log(res)
+    console.log(res.error)
 		return formErrors;
 	}
-
-	let formErrors = createUser();
 </script>
 
 <div class="hero min-h-screen">
@@ -74,7 +76,7 @@
 			</div>
 			{#if 'name' in formErrors}
 				<label class="label" for="name">
-					<span class="label-text-alt text-red-500">{formErrors['name'].message}</span>
+					<span class="label-text-alt text-red-500">{formErrors.name}</span>
 				</label>
 			{/if}
 
@@ -92,7 +94,7 @@
 			</div>
       {#if 'email' in formErrors}
 				<label class="label" for="email">
-					<span class="label-text-alt text-red-500">{formErrors['email'].message}</span>
+					<span class="label-text-alt text-red-500">{formErrors['email']}</span>
 				</label>
 			{/if}
 
@@ -109,7 +111,7 @@
 				/>
         {#if 'password' in formErrors}
 				<label class="label" for="password">
-					<span class="label-text-alt text-red-500">{formErrors['password'].message}</span>
+					<span class="label-text-alt text-red-500">{formErrors.password}</span>
 				</label>
 			{/if}
 
@@ -125,11 +127,6 @@
 						name="password-confirmation"
 					/>
 				</div>
-        {#if 'password-confirmation' in formErrors}
-				<label class="label" for="password-confirmation">
-					<span class="label-text-alt text-red-500">{formErrors['password-confirmation'].message}</span>
-				</label>
-			{/if}
 
 				<div class="form-control mt-6">
 					<button class="btn btn-primary">Register</button>

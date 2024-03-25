@@ -22,7 +22,7 @@
     const resp = await authLogin(userData.email, userData.password);
     if (resp.success) {
       postLoggedIn();
-      $loggedIn.set(true)
+      loggedIn.set(true)
     } else {
       formErrors = resp.res.error;
       clicked = false;
@@ -42,7 +42,7 @@
       </div>
       {#if 'email' in formErrors}
 				<label class="label" for="email">
-					<span class="label-text-alt text-red-500">{formErrors['email'].message}</span>
+					<span class="label-text-alt text-red-500">{formErrors['email']}</span>
 				</label>
 			{/if}
       <div class="form-control">
@@ -53,7 +53,7 @@
       </div>
       {#if 'password' in formErrors}
 				<label class="label" for="password">
-					<span class="label-text-alt text-red-500">{formErrors['password'].message}</span>
+					<span class="label-text-alt text-red-500">{formErrors['password']}</span>
 				</label>
 			{/if}
       <div class="form-control mt-2">
