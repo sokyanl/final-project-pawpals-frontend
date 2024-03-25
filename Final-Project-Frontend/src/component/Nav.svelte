@@ -1,10 +1,15 @@
 <script>
-  import { loggedIn, logOut } from '../utils/func'
-  
-  
-  
-  </script>
-  
+  import { loggedIn, logOut } from '../utils/func';
+  import { navigate } from 'svelte-routing';
+
+  function handleLogout() {
+    logOut();
+    navigate('/'); // Redirect to the home page after logout
+    window.location.reload(); // Reload the page
+  }
+</script>
+
+
   
   <div class="navbar bg-base-100 fixed top-0 w-full bg-purple-800 z-50">
     <div class="navbar-start">
@@ -55,7 +60,7 @@
       {#if $loggedIn}
         <!-- Display user profile and log out buttons when user is logged in -->
         <a href="/profile" class="btn btn-outline btn-accent mr-3">User Profile</a>
-        <button on:click={logOut} href = "/" class="btn btn-outline btn-accent mr-3">Log Out</button>
+        <button on:click={handleLogout} class="btn btn-outline btn-accent mr-3">Log Out</button>
       {:else}
         <!-- Display create account and login buttons when user is not logged in -->
         <a href="/users/create" class="btn btn-outline btn-accent mr-3">Create Account</a>
