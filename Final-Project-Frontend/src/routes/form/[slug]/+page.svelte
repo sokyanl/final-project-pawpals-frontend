@@ -97,6 +97,30 @@
 			console.log(res.error);
 		}
 	}
+
+	async function deleteComment(petId, commentId) {
+		const getToken = getTokenFromLocalStorage();
+
+		const resp = await fetch(
+			PUBLIC_BACKEND_BASE_URL + `/pet/${petId}/comment?commentId=${commentId}`,
+			{
+				method: 'DELETE',
+				mode: 'cors',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${getToken}`
+				}
+			}
+		);
+
+		if (resp.status == 200) {
+			// Remove the comment from the UI
+			// Assuming commentId is the ID of the comment I just deleted
+			data.pet.Comment = data.pet.Comment.filter((comment) => comment.id !== commentId);
+		} else {
+			console.error('Failed to delete comment');
+		}
+	}
 </script>
 
 <svelte:head>
@@ -179,16 +203,48 @@
 						</div>
 
 						<div class="flex flex-col justify-start mt-5">
-							<h2 class="text-2xl font mb-3">Comments</h2>
-							{#each data.pet.Comment as comment}
-								<div class="chat chat-start">
-									<div class="chat-header">
-										{comment.user.name}
-										<time class="text-xs opacity-50 pl-2">{comment.createdAt}</time>
+							{#if data.pet.Comment.length > 0}
+								<h2 class="text-2xl font mb-3">Comments</h2>
+								{#each data.pet.Comment as comment}
+									<div class="chat chat-start relative">
+										<!-- Make the chat container relative -->
+										<div class="chat-header">
+											{comment.user.name}
+											<time class="text-xs opacity-50 pl-2">{comment.createdAt}</time>
+										</div>
+										<div class="chat-bubble flex items-center justify-between">
+											<!-- Adjusted to justify-between -->
+											{comment.content}
+											{#if comment.userId == getUserId()}
+												<button
+													class="btn btn-xs mt-0.5 ml-3"
+													on:click={() => deleteComment(data.pet.id, comment.id)}
+												>
+													<!-- Position the button absolutely -->
+													<svg
+														xmlns="http://www.w3.org/2000/svg"
+														width="16"
+														height="16"
+														fill="currentColor"
+														class="bi bi-trash"
+														viewBox="0 0 16 16"
+													>
+														<path
+															d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"
+														/>
+														<path
+															d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"
+														/>
+													</svg>
+												</button>
+											{/if}
+										</div>
 									</div>
-									<div class="chat-bubble">{comment.content}</div>
-								</div>
-							{/each}
+								{/each}
+							{:else}
+								<h2 class="text-2xl font mb-3">Comments</h2>
+								<p>No comments yet.</p>
+							{/if}
 						</div>
 
 						{#if $loggedIn}
