@@ -30,26 +30,22 @@
 <div class="overflow-x-auto w-full mr-5 basis-3/4" style="padding: 50px">
   <div class="flex flex-wrap justify-center gap-10">
     {#each data.pet as pet}
-      <div class="flex justify-center">
-        <div class="card w-80 bg-base-100 shadow-2xl">
-          <!-- Wrap the entire card body with an anchor tag -->
-          <a href="/form/{pet.id}">
-            <figure><img src="{pet.pet_image_url}" alt="PetImage" style="height: 350px; width: 400px;" /></figure>
-            <div class="card-body">
-              <div class="badge badge-primary text-base p-3"> Current Pet Status: <strong><span style="margin-left: 8px;">{pet.pet_status}</span></strong> 
-              </div>              
-              <div class="card-actions justify-start mt-1">
-                <div class="badge badge-accent">{pet.pet_breed}</div>
-                <div class="badge badge-accent">{pet.pet_type}</div>
-                <div class="badge badge-accent">{pet.pet_colour}</div>
-                <div class="badge badge-accent">{pet.pet_gender}</div>
-              </div>
-              <p class="mt-5">{pet.pet_description}</p>
-              <div class="card-actions justify-center mt-5">
-                <a class="btn btn-primary" href="/form/{pet.id}">Learn More</a>
-              </div>
-            </div>
-          </a>
+    <div class="flex justify-center">
+      <!-- Wrap the entire card body with an anchor tag -->
+      <a href="/form/{pet.id}" class="card w-80 bg-base-100 shadow-2xl">
+        <figure><img src="{pet.pet_image_url}" alt="PetImage" style="height: 350px; width: 400px;"/></figure>
+        <div class="card-body">
+          <div class="badge badge-primary text-base p-3"> Current Pet Status: <strong><span style="margin-left: 8px;">{pet.pet_status}</span></strong></div>      
+          <div class="card-actions justify-start">
+            <div class="badge badge-accent">{pet.pet_breed}</div>
+            <div class="badge badge-accent">{pet.pet_type}</div>
+            <div class="badge badge-accent">{pet.pet_colour}</div>
+            <div class="badge badge-accent">{pet.pet_gender}</div>
+          </div>
+          <p class="mt-5">{pet.pet_description}</p>
+          <div class="card-actions justify-center mt-5">
+            <a class="btn btn-primary" href="/form/{pet.id}">Learn More</a>
+          </div>
         </div>
       </div>
     {/each}

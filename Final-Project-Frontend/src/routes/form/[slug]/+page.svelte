@@ -227,7 +227,7 @@
 				/>
 				<button
 					type="submit"
-					class="w-full p-2 bg-orange-500 text-white rounded-lg hover:bg-blue-900"
+					class="w-full p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-900"
 					>Post Comment</button
 				>
 			</form>
