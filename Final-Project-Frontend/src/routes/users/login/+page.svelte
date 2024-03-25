@@ -38,22 +38,22 @@
         <label class="label" for="email">
           <span class="label-text">Email</span>
         </label>
-        <input type="email" placeholder="email" class="input input-bordered" name="email" required />
+        <input type="email" placeholder="email" class="input input-bordered" name="email" />
       </div>
       {#if 'email' in formErrors}
 				<label class="label" for="email">
-					<span class="label-text-alt text-red-500">{formErrors['email'].message}</span>
+					<span class="label-text-alt text-red-500">{formErrors['email']}</span>
 				</label>
 			{/if}
       <div class="form-control">
         <label class="label" for="password">
           <span class="label-text">Password</span>
         </label>
-        <input type="password" placeholder="password" class="input input-bordered" name="password" required />
+        <input type="password" placeholder="password" class="input input-bordered" name="password" />
       </div>
       {#if 'password' in formErrors}
 				<label class="label" for="password">
-					<span class="label-text-alt text-red-500">{formErrors['password'].message}</span>
+					<span class="label-text-alt text-red-500">{formErrors['password']}</span>
 				</label>
 			{/if}
       <div class="form-control mt-2">
