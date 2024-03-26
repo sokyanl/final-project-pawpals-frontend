@@ -49,7 +49,7 @@
       <div class="flex justify-center h-[500px]">
         <a href="/form/{pet.id}" class="card w-80 bg-base-100 shadow-2xl">
           
-            <figure><img src="{pet.pet_image_url}" alt="PetImage" class="max-h-full max-w-[400px]"/></figure>
+          <figure><img src="{pet.pet_image_url}" alt="PetImage" style="height: 350px; width: 400px;"/></figure>
           
             <div class="card-body">    
             <div class="card-actions justify-start">
