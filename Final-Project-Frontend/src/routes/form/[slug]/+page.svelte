@@ -8,6 +8,7 @@
 	import * as maptilersdk from '@maptiler/sdk';
 	import '@maptiler/sdk/dist/maptiler-sdk.css';
 	import { loggedIn } from '../../../utils/func';
+    import Time from "svelte-time";
 
 	//this export let data is link to src/+page.js
 	export let data;
@@ -154,7 +155,7 @@
 			<div>
 				<h1 class="text-1xl font mb-2 badge badge-primary w-32 mr-3 p-4">Pet Status</h1> {data.pet.pet_status}
 			</div><div>
-				<h1 class="text-1xl font mb-2 badge badge-primary w-32 mr-3 p-4">Post Date</h1> {data.pet.creation_date}
+				<h1 class="text-1xl font mb-2 badge badge-primary w-32 mr-3 p-4">Post Date</h1> <Time timestamp="{data.pet.creation_date}" format="MMMM D, YYYY - h:mm A" />
 			</div><div>
 				<h1 class="text-1xl font mb-2 badge badge-primary w-32 mr-3 p-4">Pet Type</h1> {data.pet.pet_type}
 			</div><div>
@@ -182,7 +183,7 @@
 								<!-- Make the chat container relative -->
 								<div class="chat-header mb-1">
 									{comment.user.name}
-									<time class="text-xs opacity-50 pl-2">{comment.createdAt}</time>
+									<time class="text-xs opacity-50 pl-2"><Time timestamp="{comment.createdAt}" format="MMMM D, YYYY - h:mm A" /></time>
 								</div>
 								<div class="chat-bubble flex items-center justify-between">
 									<!-- Adjusted to justify-between -->
