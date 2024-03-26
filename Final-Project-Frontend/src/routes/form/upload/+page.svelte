@@ -3,13 +3,33 @@
 	import { goto } from '$app/navigation';
 	import { uploadMedia } from '../../../utils/s3-uploader.js';
 	import { getTokenFromLocalStorage } from '../../../utils/func';
+	import { onMount } from 'svelte';
 
 	let clicked = false;
+	let fileSelected = false;
+
 	//function to handle upload pet image
 	let formErrors = {};
+	let fileName, fileUrl;
 	async function uploadImage(evt) {
+		// clicked = true;
+		// const [fileName, fileUrl] = await uploadMedia(evt.target['image'].files[0]);
+
+		const petImage = evt.target['image'].files[0];
+
+		if(!petImage) {
+			console.error("No image selected. Please select an image to upload.");
+			return;
+		}
+
 		clicked = true;
-		const [fileName, fileUrl] = await uploadMedia(evt.target['image'].files[0]);
+		try {
+			[fileName, fileUrl] = await uploadMedia(petImage);
+		} catch (error) {
+			clicked = false;
+			console.error("Upload failed:", error);
+		}
+
 
 		//retrive token for authentication purpose log in user can post image
 		const accessToken = getTokenFromLocalStorage();
@@ -39,13 +59,25 @@
 		console.log('Response status:', resp.status);
 		if (resp.status === 200) {
 			// console.log('go slug page');
+			clicked = false;
 			goto(`/form/${res.id}`); //link back to the created pet page
 		} else if (resp.status === 400) {
-			console.log(res);
-			formErrors = res.data;
 			clicked = false;
+			console.log(res);
+			formErrors = res.error;
 		}
 	}
+
+	// Function to handle file input change
+	function handleFileChange(event) {
+		fileSelected = event.target.files.length > 0;
+	}
+
+	onMount(() => {
+		// Check initial state
+		const fileInput = document.getElementById('imageInput');
+		fileSelected = fileInput.files.length > 0;
+	});
 </script>
 
 <svelte:head>
@@ -77,6 +109,11 @@
 						<option>Cat</option>
 						<option>Dog</option>
 					</select>
+					{#if 'pet_type' in formErrors}
+						<label class="label" for="type">
+							<span class="label-text-alt text-red-500">{formErrors.pet_type}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Breed Section -->
 					<label class="label" for="breed">
@@ -88,6 +125,11 @@
 						class="input input-bordered"
 						name="breed"
 					/>
+					{#if 'pet_breed' in formErrors}
+						<label class="label" for="breed">
+							<span class="label-text-alt text-red-500">{formErrors.pet_breed}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Colour Section -->
 					<label class="label" for="">
@@ -99,9 +141,14 @@
 						placeholder="example: black, white, brown"
 						class="input input-bordered"
 					/>
+					{#if 'pet_colour' in formErrors}
+						<label class="label" for="color">
+							<span class="label-text-alt text-red-500">{formErrors.pet_colour}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Gender Section -->
-					<label class="label" for="">
+					<label class="label" for="gender">
 						<span class="label-text font-medium text-base mt-3">Pet Gender</span>
 					</label>
 					<select class="select select-bordered w-full required" name="gender">
@@ -110,9 +157,14 @@
 						<option>Male</option>
 						<option>I'm not sure...</option>
 					</select>
+					{#if 'pet_gender' in formErrors}
+						<label class="label" for="gender">
+							<span class="label-text-alt text-red-500">{formErrors.pet_gender}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Age Section -->
-					<label class="label" for="">
+					<label class="label" for="age">
 						<span class="label-text font-medium text-base mt-3">Pet Age</span>
 					</label>
 					<input
@@ -126,14 +178,19 @@
 					>
 
 					<!-- Pet Description Section -->
-					<label class="label" for="">
+					<label class="label" for="description">
 						<span class="label-text font-medium text-base mt-3">Pet Description</span>
 					</label>
 					<textarea
 						name="description"
 						class="textarea input-bordered"
-						placeholder="example: Pet name, their behaviour, any unique physical traits like a white spot under their chin, etc..."
+						placeholder="Include your contact details here and further pet descriptions, example: Pet name, their behaviour, any unique physical traits like a white spot under their chin, etc..."
 					></textarea>
+					{#if 'pet_description' in formErrors}
+						<label class="label" for="description">
+							<span class="label-text-alt text-red-500">{formErrors.pet_description}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Location Section -->
 					<label class="label" for="">
@@ -145,15 +202,33 @@
 						placeholder="example: Subang, Kota Damansara, Puchong, etc..."
 						class="input input-bordered"
 					/>
+					{#if 'pet_location' in formErrors}
+						<label class="label" for="location">
+							<span class="label-text-alt text-red-500">{formErrors.pet_location}</span>
+						</label>
+					{/if}
 
 					<!-- Pet Image Section -->
-					<label class="label" for="">
+					<label class="label" for="image">
 						<span class="label-text font-medium text-base mt-3">Pet Image</span>
 					</label>
-					<input type="file" class="file:btn file:btn-primary" name="image" />
+					<input
+						type="file"
+						class="file:btn file:btn-primary"
+						name="image"
+						id="imageInput"
+						on:change={handleFileChange}
+					/>
+					<span
+						class="label-text-secondary text-sm text-red-500 mt-2 mb-2"
+						id="uploadMessage"
+						style="display: {fileSelected ? 'none' : 'block'};"
+					>
+						Please upload image before submitting
+					</span>
 
 					<!-- Pet Status Section -->
-					<label class="label" for="">
+					<label class="label" for="status">
 						<span class="label-text font-medium text-base mt-3">Pet Status</span>
 					</label>
 					<select class="select select-bordered w-full" name="status">
@@ -161,6 +236,11 @@
 						<option>Lost</option>
 						<option>Found</option>
 					</select>
+					{#if 'pet_status' in formErrors}
+						<label class="label" for="location">
+							<span class="label-text-alt text-red-500">{formErrors.pet_status}</span>
+						</label>
+					{/if}
 
 					<div class="form-control mt-6">
 						{#if clicked}
