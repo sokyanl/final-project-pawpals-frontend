@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { uploadMedia } from '../../../../utils/s3-uploader.js';
 	import { getTokenFromLocalStorage } from '../../../../utils/func';
+	import { onMount } from 'svelte';
 
 	export let data;
 
@@ -10,13 +11,28 @@
 	let fileName, fileUrl;
 	let clicked = false;
 
+	let fileSelected = false;
+
 	async function uploadImage(evt) {
 		evt.preventDefault();
-		clicked = true;
+		// clicked = true;
 		const newImage = evt.target['image'].files[0];
 
-		[fileName, fileUrl] = await uploadMedia(evt.target['image'].files[0]);
+		if(!newImage) {
+			console.error("No image selected. Please select an image to upload.");
+			return;
+		}
 
+		clicked = true;
+		try {
+			[fileName, fileUrl] = await uploadMedia(newImage);
+		} catch (error) {
+			clicked = false;
+			console.error("Upload failed:", error);
+		}
+
+		// [fileName, fileUrl] = await uploadMedia(evt.target['image'].files[0]);
+	
 		const accessToken = getTokenFromLocalStorage();
 
 		const userData = {
@@ -48,13 +64,25 @@
 
 		if (resp.status === 200) {
 			goto(`/form/${data.pet.id}`);
+			clicked = false;
 		} else if (resp.status === 400) {
 			// const res = await resp.json();
+			clicked = false;
 			console.log(res);
 			formErrors = res.error;
-			clicked = false;
 		}
 	}
+
+	// Function to handle file input change
+	function handleFileChange(event) {
+		fileSelected = event.target.files.length > 0;
+	}
+
+	onMount(() => {
+		// Check initial state
+		const fileInput = document.getElementById('imageInput');
+		fileSelected = fileInput.files.length > 0;
+	});
 </script>
 
 <svelte:head>
@@ -166,7 +194,7 @@
 						name="description"
 						class="textarea textarea-primary"
 						value={data.pet.pet_description}
-						placeholder="example: Pet name, their behaviour, any unique physical traits like a white spot under their chin, etc..."
+						placeholder="Include your contact details here and further pet descriptions, example: Pet name, their behaviour, any unique physical traits like a white spot under their chin, etc..."
 					></textarea>
 					{#if 'pet_description' in formErrors}
 						<label class="label" for="description">
@@ -195,7 +223,20 @@
 					<label class="label" for="image">
 						<span class="label-text font-medium text-base mt-3">Pet Image</span>
 					</label>
-					<input type="file" class="file:btn file:btn-primary" name="image" />
+					<input
+						type="file"
+						class="file:btn file:btn-primary"
+						name="image"
+						id="imageInput"
+						on:change={handleFileChange}
+					/>
+					<span
+						class="label-text-secondary text-sm text-red-500 mt-2 mb-2"
+						id="uploadMessage"
+						style="display: {fileSelected ? 'none' : 'block'};"
+					>
+						Please reupload image before submitting
+					</span>
 
 					<!-- Pet Status Section -->
 					<label class="label" for="status">
