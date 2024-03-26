@@ -13,6 +13,7 @@
     selectedType = event.target.value;
     dispatch('filterChange', selectedType);
   }
+  
 
 </script>
 

@@ -12,7 +12,9 @@
 	//this export let data is link to src/+page.js
 	export let data;
 	let clicked = false;
-	// fucntion to show map based on pet location
+	let formErrors = {};
+
+	// function to show map based on pet location
 	async function initializeMap() {
 		maptilersdk.config.apiKey = PUBLIC_MAPTILER_API_KEY;
 		const map = new maptilersdk.Map({
@@ -105,7 +107,7 @@
 			newComment = '';
 		} else {
 			const res = await resp.json();
-			console.log(res.error);
+			formErrors = res.error;
 		}
 	}
 
@@ -143,11 +145,12 @@
 	class="hero min-h-screen bg-base-200"
 	style="background-image: url('/BG7.png'); background-position: bottom;"
 >
-	<div class="hero-content flex-col lg:flex-row mt-40">
+	<div class="hero-content flex-col lg:flex-row w-full mt-24">
 	<div class="hero-content flex-col w-full">
 		<img src={data.pet.pet_image_url} alt="Pet" class="rounded-lg shadow-2xl mr-10 mb-5"/>
 		</div>
 		<div class="w-full">
+			<div class="text-2xl font-bold badge badge-outline p-5 w-full mb-3">Posted by: {data.pet.user.name}</div>
 			<div>
 				<h1 class="text-1xl font mb-2 badge badge-primary w-32 mr-3 p-4">Pet Status</h1> {data.pet.pet_status}
 			</div><div>
@@ -168,9 +171,9 @@
                 <h1 class="text-1xl font mb-2 badge badge-primary w-32 mr-3 p-4">Description</h1><strong>{data.pet.pet_description}</strong>
             </div>
 
-		<div role="tablist" class="tabs tabs-lifted w-full mt-10">
-			<input type="radio" name="my_tabs_2" role="tab" class="tab font-bold" aria-label="Comment Section" />
-			<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+			<div role="tablist" class="tabs tabs-lifted w-full mt-10">
+				<input type="radio" name="my_tabs_2" role="tab" class="tab font-bold" aria-label="Comment Section" />
+				<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
 
 				<div class="flex flex-col justify-start">
 					{#if data.pet.Comment.length > 0}
@@ -220,6 +223,7 @@
 			<form on:submit|preventDefault={() => postComment()}>
 				<input
 					type="text"
+					name="content"
 					bind:value={newComment}
 					placeholder="Write a comment..."
 					class="w-full p-2 my-4 border rounded-lg focus:outline-none focus:border-blue-800 "
@@ -230,12 +234,18 @@
 					>Post Comment</button
 				>
 			</form>
+			{#if 'content' in formErrors}
+                <label class="label" for="comment">
+                    <span class="label-text-alt text-red-500">{formErrors.content}</span>
+                    </label>
+            {/if}
 		{/if}
 
 			</div>
 		  
-			<input type="radio" name="my_tabs_2" role="tab" class="tab font-bold" aria-label="Last Seen Location Map" checked />
+			<input type="radio" name="my_tabs_2" role="tab" class="tab font-bold w-48" aria-label="Last Seen Location Map" checked />
 			<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6 mb-3">
+		
 				<div id="map"></div> <!-- Location Map here -->
 			</div>
 		  </div>
@@ -257,12 +267,22 @@
 
 <style>
 
-	#map {
-		position: relative;
-		top: 0;
-		bottom: 0;
-		width: 100%;
-		height: 300px;
-	}
+.tabs {
+    width: auto; /* Adjust width dynamically based on content */
+}
+
+.tab-content {
+    width: 100%; /* Occupy full width of the parent container */
+    overflow-x: auto; /* Allow horizontal overflow */
+}
+
+
+#map {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 350px;
+}
 
 </style>
