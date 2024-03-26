@@ -17,7 +17,7 @@
       email: evt.target['email'].value,
       password: evt.target['password'].value
     };
-    console.log(userData); //Prints in console if login is successful
+    // console.log(userData); //Prints in console if login is successful
     // If not logged in, perform login operation
     const resp = await authLogin(userData.email, userData.password);
     if (resp.success) {

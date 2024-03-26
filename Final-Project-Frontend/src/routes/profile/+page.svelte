@@ -35,7 +35,7 @@
       <a href="/form/{pet.id}" class="card w-80 bg-base-100 shadow-2xl">
         <figure><img src="{pet.pet_image_url}" alt="PetImage" style="height: 350px; width: 400px;"/></figure>
         <div class="card-body">
-          <div class="badge badge-primary text-base p-3"> Current Pet Status: <strong><span style="margin-left: 8px;">{pet.pet_status}</span></strong></div>      
+          <div class="badge badge-primary text-base p-3"> Current Pet Status: <strong><span style="margin-left: 8px;">{pet.pet_status}</span></strong></div>     
           <div class="card-actions justify-start">
             <div class="badge badge-success text-white">{pet.pet_type}</div>
             <div class="badge badge-accent">{pet.pet_breed}</div>
